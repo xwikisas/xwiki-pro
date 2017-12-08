@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.xwiki.pro</groupId>
+    <artifactId>xwiki-pro-distribution</artifactId>
+    <version>9.10-1-SNAPSHOT</version>
+  </parent>
+  <artifactId>xwiki-pro-distribution-war</artifactId>
+  <name>XWiki Pro - Distribution - WAR</name>
+  <packaging>war</packaging>
+  <description>The XWiki Pro WAR package. It contains everything needed to run XWiki Pro in production and then choose a flavor.</description>
+  <properties>
+    <!-- Put the name of the distribution which will be displayed in the footer -->
+    <xwiki.extension.name>XWiki Pro</xwiki.extension.name>
+    <xwiki.extension.features>xwiki</xwiki.extension.features>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-distribution-war</artifactId>
+      <version>${platform.version}</version>
+      <type>war</type>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <!-- Generate the extension descriptor for the WAR. -->
+      <plugin>
+        <groupId>org.xwiki.commons</groupId>
+        <artifactId>xwiki-commons-tool-extension-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>war</id>
+            <goals>
+              <goal>war</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <!-- Make sure our own descriptor doesn't get overwritten. -->
+          <dependentWarExcludes>META-INF/extension.xed</dependentWarExcludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
