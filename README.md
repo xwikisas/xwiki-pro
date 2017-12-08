@@ -1,2 +1,1 @@
-# xwiki-pro
-XWiki Pro
+# XWiki Pro
