@@ -106,6 +106,9 @@
     <xwiki.properties.defaultWysiwygEditor />
     <xwiki.properties.additionalproperties />
 
+    <!-- Default location for XWiki's Data directory -->
+    <xwikiDataDir>data</xwikiDataDir>
+
     <!-- Use HSQLDB by default -->
     <xwiki.db>hsqldb</xwiki.db>
     <xwiki.db.jdbc.groupId>org.hsqldb</xwiki.db.jdbc.groupId>

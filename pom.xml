@@ -46,5 +46,6 @@
     <module>xwiki-pro-distribution</module>
     <module>xwiki-pro-flavor</module>
     <module>xwiki-pro-package</module>
+    <module>xwiki-pro-ui</module>
   </modules>
 </project>

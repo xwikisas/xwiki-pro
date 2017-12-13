@@ -63,6 +63,14 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
+          <webResources>
+            <!-- Overwrite the version.properties file. -->
+            <resource>
+              <directory>${basedir}/src/main/webInfResources</directory>
+              <targetPath>WEB-INF</targetPath>
+              <filtering>true</filtering>
+            </resource>
+          </webResources>
           <!-- Make sure our own descriptor doesn't get overwritten. -->
           <dependentWarExcludes>META-INF/extension.xed</dependentWarExcludes>
         </configuration>

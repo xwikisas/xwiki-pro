@@ -24,25 +24,22 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.xwiki.pro</groupId>
-    <artifactId>xwiki-pro-flavor</artifactId>
+    <artifactId>xwiki-pro</artifactId>
     <version>9.10-1-SNAPSHOT</version>
   </parent>
-  <artifactId>xwiki-pro-flavor-common</artifactId>
-  <name>XWiki Pro - Flavor - Common</name>
+  <artifactId>xwiki-pro-ui</artifactId>
+  <name>XWiki Pro - UI</name>
   <packaging>xar</packaging>
-  <description>The set of wiki pages and applications to be installed both on the main wiki and on subwikis.</description>
+  <properties>
+    <!-- Name to display by the Extension Manager -->
+    <xwiki.extension.name>XWiki Pro</xwiki.extension.name>
+  </properties>
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>xwiki-pro-ui</artifactId>
-      <version>${project.version}</version>
-      <type>xar</type>
-    </dependency>
-    <dependency>
-      <groupId>org.xwiki.platform</groupId>
-      <artifactId>xwiki-platform-distribution-flavor-common</artifactId>
-      <version>${platform.version}</version>
-      <type>xar</type>
+      <groupId>com.xwiki.licensing</groupId>
+      <artifactId>application-licensing-licensor-api</artifactId>
+      <version>1.7</version>
+      <scope>runtime</scope>
     </dependency>
   </dependencies>
 </project>

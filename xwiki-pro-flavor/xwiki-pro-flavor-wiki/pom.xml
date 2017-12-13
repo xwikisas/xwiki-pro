@@ -34,7 +34,7 @@
   <properties>
     <xwiki.extension.category>flavor</xwiki.extension.category>
     <!-- Name to display by the Extension Manager -->
-    <xwiki.extension.name>XWiki Pro Flavor - Sub Wiki</xwiki.extension.name>
+    <xwiki.extension.name>XWiki Pro Flavor (Sub Wiki)</xwiki.extension.name>
     <!-- Should be insalled on a wiki but not main wiki -->
     <xwiki.extension.namespaces>[wiki:(?!xwiki$).*]</xwiki.extension.namespaces>
     <xwiki.extension.features>
