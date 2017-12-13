@@ -34,6 +34,17 @@
     <!-- Name to display by the Extension Manager -->
     <xwiki.extension.name>XWiki Pro</xwiki.extension.name>
   </properties>
+  <!-- Avoid enforce-upper-bounds rule complains (they're actually false positives since Extension Manager is not
+    affected by that) -->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-extension-handler-xar</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <dependencies>
     <dependency>
       <groupId>com.xwiki.licensing</groupId>
