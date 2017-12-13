@@ -34,23 +34,6 @@
     <!-- Name to display by the Extension Manager -->
     <xwiki.extension.name>XWiki Pro</xwiki.extension.name>
   </properties>
-  <!-- Avoid enforce-upper-bounds rule complains (they're actually false positives since Extension Manager is not
-    affected by that) -->
-  <dependencyManagement>
-    <!-- Transitive dependencies of application-licensing-licensor-api -->
-    <dependencies>
-      <dependency>
-        <groupId>org.apache.xmlgraphics</groupId>
-        <artifactId>batik-parser</artifactId>
-        <version>1.9</version>
-      </dependency>
-      <dependency>
-        <groupId>org.gagravarr</groupId>
-        <artifactId>vorbis-java-core</artifactId>
-        <version>0.8</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
   <dependencies>
     <dependency>
       <groupId>com.xwiki.licensing</groupId>

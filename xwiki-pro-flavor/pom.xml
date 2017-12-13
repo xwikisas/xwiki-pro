@@ -30,53 +30,6 @@
   <artifactId>xwiki-pro-flavor</artifactId>
   <name>XWiki Pro - Flavor</name>
   <packaging>pom</packaging>
-  <!-- Avoid enforce-upper-bounds rule complains (they're actually false positives since Extension Manager is not
-    affected by that) -->
-  <dependencyManagement>
-    <dependencies>
-      <!-- application-help-center -->
-      <dependency>
-        <groupId>org.xwiki.platform</groupId>
-        <artifactId>xwiki-platform-activitystream-ui</artifactId>
-        <version>${platform.version}</version>
-        <type>xar</type>
-      </dependency>
-      <dependency>
-        <groupId>org.xwiki.platform</groupId>
-        <artifactId>xwiki-platform-administration-ui</artifactId>
-        <version>${platform.version}</version>
-        <type>xar</type>
-      </dependency>
-      <dependency>
-        <groupId>org.xwiki.platform</groupId>
-        <artifactId>xwiki-platform-icon-script</artifactId>
-        <version>${platform.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.xwiki.platform</groupId>
-        <artifactId>xwiki-platform-index-ui</artifactId>
-        <version>${platform.version}</version>
-        <type>xar</type>
-      </dependency>
-      <dependency>
-        <groupId>org.xwiki.platform</groupId>
-        <artifactId>xwiki-platform-index-tree-macro</artifactId>
-        <version>${platform.version}</version>
-        <type>xar</type>
-      </dependency>
-      <dependency>
-        <groupId>org.xwiki.platform</groupId>
-        <artifactId>xwiki-platform-skin-skinx</artifactId>
-        <version>${platform.version}</version>
-      </dependency>
-      <!-- application-ckeditor-ui -->
-      <dependency>
-        <groupId>org.xwiki.rendering</groupId>
-        <artifactId>xwiki-rendering-macro-html</artifactId>
-        <version>${rendering.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
   <modules>
     <module>xwiki-pro-flavor-common</module>
     <module>xwiki-pro-flavor-mainwiki</module>
