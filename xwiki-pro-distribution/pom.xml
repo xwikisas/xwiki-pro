@@ -201,6 +201,7 @@
   </profiles>
   <modules>
     <module>xwiki-pro-distribution-data</module>
+    <module>xwiki-pro-distribution-debian</module>
     <module>xwiki-pro-distribution-jetty-hsqldb</module>
     <module>xwiki-pro-distribution-war</module>
   </modules>

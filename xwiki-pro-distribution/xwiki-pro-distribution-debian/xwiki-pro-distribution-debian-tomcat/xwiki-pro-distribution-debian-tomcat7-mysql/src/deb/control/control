@@ -1,0 +1,12 @@
+Package: xwiki-pro-tomcat7-mysql
+Version: [[version]]
+Section: java
+Priority: optional
+Architecture: all
+Depends: xwiki-pro-tomcat7-common (= [[version]]), xwiki-pro-mysql-common (= [[version]])
+Conflicts: xwiki-enterprise-tomcat7-mysql, xwiki-tomcat7-mysql
+Maintainer: [[debian.maintainer]]
+License: [[debian.license]]
+Description: [[debian.description]]
+Bugs: [[debian.bugs]]
+Homepage: [[debian.homepage]]

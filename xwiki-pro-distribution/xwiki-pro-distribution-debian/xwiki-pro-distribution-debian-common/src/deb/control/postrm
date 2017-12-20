@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+#set -x
+
+case "$1" in
+    purge)
+        # Purge XWiki configuration
+        rm -f /etc/xwiki/xwiki.cfg /etc/xwiki/xwiki.properties /etc/xwiki/web.xml
+        ucf --purge /etc/xwiki/xwiki.cfg || true
+        ucf --purge /etc/xwiki/xwiki.properties || true
+        ucf --purge /etc/xwiki/web.xml || true
+        ;;
+esac
+
+exit 0

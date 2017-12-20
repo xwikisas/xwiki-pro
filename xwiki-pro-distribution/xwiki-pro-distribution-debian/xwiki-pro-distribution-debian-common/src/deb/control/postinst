@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e
+#set -x
+
+#########################
+# var
+#########################
+
+if [ ! -d /var/lib/xwiki ]; then
+  mkdir /var/lib/xwiki
+fi
+if [ ! -d /var/lib/xwiki/data ]; then
+  mkdir /var/lib/xwiki/data
+fi
+
+# Update configuration files
+ucf --three-way --debconf-ok /usr/share/xwiki/default/xwiki.cfg /etc/xwiki/xwiki.cfg
+ucf --three-way --debconf-ok /usr/share/xwiki/default/xwiki.properties /etc/xwiki/xwiki.properties
+ucf --three-way --debconf-ok /usr/share/xwiki/default/web.xml /etc/xwiki/web.xml

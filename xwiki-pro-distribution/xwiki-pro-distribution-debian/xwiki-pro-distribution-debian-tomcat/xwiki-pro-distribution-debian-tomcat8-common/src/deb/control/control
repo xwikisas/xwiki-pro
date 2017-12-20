@@ -1,0 +1,16 @@
+Package: xwiki-pro-tomcat8-common
+Version: [[version]]
+Section: java
+Priority: optional
+Architecture: all
+Depends: xwiki-pro-common (= [[version]]), tomcat8
+Provides: xwiki-tomcat-common
+Suggests: xwiki-pro-tomcat8-mysql | xwiki-pro-tomcat8-pgsql
+Replaces: xwiki-tomcat-common
+Breaks: xwiki-tomcat-common
+Conflicts: xwiki-enterprise-tomcat8-common, xwiki-tomcat8-common
+Maintainer: [[debian.maintainer]]
+License: [[debian.license]]
+Description: [[debian.description]]
+Bugs: [[debian.bugs]]
+Homepage: [[debian.homepage]]

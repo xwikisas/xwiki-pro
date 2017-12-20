@@ -1,0 +1,12 @@
+Package: xwiki-pro-tomcat7-pgsql
+Version: [[version]]
+Section: java
+Priority: optional
+Architecture: all
+Depends: xwiki-pro-tomcat7-common (= [[version]]), xwiki-pro-pgsql-common (= [[version]])
+Conflicts: xwiki-enterprise-tomcat7-pgsql, xwiki-tomcat7-pgsql
+Maintainer: [[debian.maintainer]]
+License: [[debian.license]]
+Description: [[debian.description]]
+Bugs: [[debian.bugs]]
+Homepage: [[debian.homepage]]
