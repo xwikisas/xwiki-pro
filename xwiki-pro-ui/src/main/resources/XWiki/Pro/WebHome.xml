@@ -20,7 +20,7 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 -->
 
-<xwikidoc version="1.2" reference="XWiki.Pro.WebHome" locale="">
+<xwikidoc version="1.3" reference="XWiki.Pro.WebHome" locale="">
   <web>XWiki.Pro</web>
   <name>WebHome</name>
   <language/>
@@ -42,43 +42,53 @@
   <content>{{include reference="Licenses.Code.VelocityMacros"/}}
 
 {{velocity}}
-#set ($xWikiProReference = $services.model.createDocumentReference('', ['XWiki', 'Pro'], 'Wizard'))
-#set ($hasLicensure = $services.licensing.licensor.hasLicensureForEntity($xWikiProReference))
-#if ($hasAdmin &amp;&amp; !$hasLicensure)
-  #set($discard = $xwiki.jsx.use('Licenses.WebHome'))
-  #set($discard = $xwiki.ssx.use('Licenses.WebHome'))
-  #set($discard = $xwiki.jsx.use('XWiki.Pro.Wizard'))
-#end
 #set ($extensionId = 'com.xwiki.pro:xwiki-pro-ui')
 #set ($namespace = "wiki:$xcontext.database")
 #set ($extension = $services.extension.installed.getInstalledExtension($extensionId, $namespace))
 #set ($license = $services.licensing.licensor.getLicenseForExtension($extension.id))
-{{html clean=false}}
-  &lt;div id="xWikiProModal" class="modal fade" role="dialog"&gt;
-    &lt;div class="modal-dialog"&gt;
-      &lt;div class="modal-content"&gt;
-        &lt;form id="ownerDetails" target="_blank" class="xform" action="${storeBuyURL}" method="post"&gt;
+## Check if the modal popup should be displayed in the current page
+#displayInPage
+#if ((!$license || $license.expirationDate == 0) &amp;&amp; $displayInPage)
+  #set($discard = $xwiki.jsx.use('Licenses.WebHome'))
+  #set($discard = $xwiki.ssx.use('Licenses.WebHome'))
+  #set($discard = $xwiki.jsx.use('XWiki.Pro.WebHome'))
+  {{html clean=false}}
+    &lt;div id="xWikiProModal" class="modal fade" role="dialog"&gt;
+      &lt;div class="modal-dialog"&gt;
+        &lt;div class="modal-content"&gt;
           &lt;div class="modal-header"&gt;
             &lt;button type="button" class="close" data-dismiss="modal"&gt;&amp;times;&lt;/button&gt;
             &lt;h4 class="modal-title"&gt;$services.localization.render('licensor.ownerDetails.hint')&lt;/h4&gt;
           &lt;/div&gt;
           &lt;div class="modal-body"&gt;
-            &lt;dl&gt;
-              #getOwnerFormFields
-            &lt;/dl&gt;
+            &lt;form id="ownerDetails" target="_blank" class="xform" action="${storeBuyURL}" method="post"&gt;
+              &lt;dl&gt;
+                #getOwnerFormFields
+                #getInstanceIdInput(true)
+              &lt;/dl&gt;
+            &lt;/form&gt;
           &lt;/div&gt;
-          &lt;div class="modal-footer"&gt;
+          &lt;div class="modal-footer" id="licenseManager"&gt;
             #set($customButtons = [])
             ## Add the "I already have a license" button in the same container along with the "Buy" and "Get Trial"
             ## buttons.
             #set ($discard = $customButtons.add(['PAID', 'default', 'owned']))
             #licenseActions($license $extension $userCount)
           &lt;/div&gt;
-        &lt;/form&gt;
+        &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
-  &lt;/div&gt;
-{{/html}}
+  {{/html}}
+#end
+#macro (displayInPage)
+  #set ($displayInPage = true)
+  ## Do not display the popup in the pages that already provide the onwer's details form
+  #if ($xwiki.getURL('Licenses.WebHome') == $xwiki.getURL($doc.documentReference) ||
+       $xwiki.getURL('XWiki.XWikiPreferences', 'admin', 'editor=globaladmin&amp;section=Licenses') ==
+       $xwiki.getURL($doc.documentReference, 'admin', "editor=${request.editor}&amp;section=${request.section}"))
+    #set ($displayInPage = false)
+  #end
+#end
 {{/velocity}}</content>
   <object>
     <name>XWiki.Pro.WebHome</name>
@@ -251,7 +261,11 @@
       </scope>
     </class>
     <property>
-      <content>{{include reference="XWiki.Pro.WebHome" /}}</content>
+      <content>{{velocity}}
+#if ($hasAdmin)
+  {{include reference="XWiki.Pro.WebHome" /}}
+#end
+{{/velocity}}</content>
     </property>
     <property>
       <extensionPointId>org.xwiki.platform.template.header.after</extensionPointId>
