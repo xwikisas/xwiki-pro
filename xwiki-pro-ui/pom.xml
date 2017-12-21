@@ -35,12 +35,17 @@
     <xwiki.extension.name>XWiki Pro</xwiki.extension.name>
     <!-- The minimum version of XWiki that is compatible with this extension. -->
     <xwiki.minimum.version>8.4</xwiki.minimum.version>
+    <!-- The list of documents that have an implicit unlimited free license. The users can view these documents without
+      buying a license or getting a trial license, but they cannot edit or delete them. -->
+    <xwiki.extension.licensing.publicDocuments>
+      XWiki.Pro.WebHome
+    </xwiki.extension.licensing.publicDocuments>
   </properties>
   <dependencies>
     <dependency>
       <groupId>com.xwiki.licensing</groupId>
       <artifactId>application-licensing-licensor-api</artifactId>
-      <version>1.7</version>
+      <version>${licensing.version}</version>
       <scope>runtime</scope>
     </dependency>
   </dependencies>
