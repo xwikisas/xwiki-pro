@@ -33,6 +33,8 @@
   <properties>
     <!-- Name to display by the Extension Manager -->
     <xwiki.extension.name>XWiki Pro</xwiki.extension.name>
+    <!-- The minimum version of XWiki that is compatible with this extension. -->
+    <xwiki.minimum.version>8.4</xwiki.minimum.version>
   </properties>
   <dependencies>
     <dependency>
