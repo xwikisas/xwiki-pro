@@ -25,20 +25,13 @@
   <parent>
     <groupId>com.xwiki.pro</groupId>
     <artifactId>xwiki-pro-distribution</artifactId>
-    <version>9.11-1-SNAPSHOT</version>
+    <version>8.4.5-SNAPSHOT</version>
   </parent>
   <artifactId>xwiki-pro-distribution-data</artifactId>
   <name>XWiki Pro - Distribution - Data</name>
   <packaging>pom</packaging>
   <dependencies>
     <!-- Make sure to build those before data module -->
-    <dependency>
-      <groupId>org.xwiki.platform</groupId>
-      <artifactId>xwiki-platform-distribution-ui-admin-user</artifactId>
-      <version>${platform.version}</version>
-      <type>xar</type>
-      <scope>provided</scope>
-    </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>xwiki-pro-flavor-mainwiki</artifactId>
@@ -47,8 +40,15 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.xwiki.platform</groupId>
-      <artifactId>xwiki-platform-distribution-war-dependencies</artifactId>
+      <groupId>org.xwiki.enterprise</groupId>
+      <artifactId>xwiki-enterprise-ui-admin-user</artifactId>
+      <version>${platform.version}</version>
+      <type>xar</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.enterprise</groupId>
+      <artifactId>xwiki-enterprise-web</artifactId>
       <version>${platform.version}</version>
       <type>pom</type>
       <scope>provided</scope>
@@ -130,18 +130,6 @@
               <artifactId>xwiki-platform-watchlist-api</artifactId>
               <version>${platform.version}</version>
             </dependency>
-            <!-- Notification Filters Default module has a migrator to handle scope filter preferences -->
-            <dependency>
-              <groupId>org.xwiki.platform</groupId>
-              <artifactId>xwiki-platform-notifications-filters-default</artifactId>
-              <version>${platform.version}</version>
-            </dependency>
-            <!-- Filesystem store migrations -->
-            <dependency>
-              <groupId>org.xwiki.platform</groupId>
-              <artifactId>xwiki-platform-store-filesystem-oldcore</artifactId>
-              <version>${platform.version}</version>
-            </dependency>
             <!-- We need the Servlet API dep since it's used by the Packager and since it has
                  a provided scope in XWiki core it's not inherited as part of transitive deps -->
             <dependency>
@@ -159,27 +147,27 @@
               <configuration>
                 <includes>
                   <include>
+                    <groupId>org.xwiki.enterprise</groupId>
+                    <artifactId>xwiki-enterprise-ui-admin-user</artifactId>
+                    <version>${platform.version}</version>
+                    <type>xar</type>
+                  </include>
+                  <include>
                     <groupId>${project.groupId}</groupId>
                     <artifactId>xwiki-pro-flavor-mainwiki</artifactId>
                     <version>${project.version}</version>
                     <type>xar</type>
                   </include>
-                  <include>
-                    <groupId>org.xwiki.platform</groupId>
-                    <artifactId>xwiki-platform-distribution-ui-admin-user</artifactId>
-                    <version>${platform.version}</version>
-                    <type>xar</type>
-                  </include>
                 </includes>
-                <coreExtensions>
+                <excludes>
                   <!-- We exclude what is already in the WAR -->
-                  <coreExtension>
-                    <groupId>org.xwiki.platform</groupId>
-                    <artifactId>xwiki-platform-distribution-war-dependencies</artifactId>
+                  <exclude>
+                    <groupId>org.xwiki.enterprise</groupId>
+                    <artifactId>xwiki-enterprise-web</artifactId>
                     <version>${platform.version}</version>
                     <type>pom</type>
-                  </coreExtension>
-                </coreExtensions>
+                  </exclude>
+                </excludes>
               </configuration>
             </execution>
           </executions>

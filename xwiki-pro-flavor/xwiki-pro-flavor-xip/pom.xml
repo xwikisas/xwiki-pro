@@ -25,7 +25,7 @@
   <parent>
     <groupId>com.xwiki.pro</groupId>
     <artifactId>xwiki-pro-flavor</artifactId>
-    <version>9.11-1-SNAPSHOT</version>
+    <version>8.4.5-SNAPSHOT</version>
   </parent>
   <artifactId>xwiki-pro-flavor-xip</artifactId>
   <name>XWiki Pro - Flavor - XIP</name>
@@ -60,15 +60,22 @@
         <plugin>
           <groupId>org.xwiki.commons</groupId>
           <artifactId>xwiki-commons-tool-extension-plugin</artifactId>
-          <version>${commons.version}</version>
           <configuration>
             <coreExtensions>
               <!-- We exclude what is already in the WAR. -->
               <coreExtension>
-                <groupId>org.xwiki.platform</groupId>
-                <artifactId>xwiki-platform-distribution-war-dependencies</artifactId>
+                <groupId>org.xwiki.enterprise</groupId>
+                <artifactId>xwiki-enterprise-web</artifactId>
                 <version>${platform.version}</version>
                 <type>pom</type>
+              </coreExtension>
+              <!-- This is an optional transitive dependency of the Office365 Application that triggers a circular
+                dependency that breaks the generation of the XIP (with StackOverflowError) -->
+              <coreExtension>
+                <groupId>jaxen</groupId>
+                <artifactId>jaxen</artifactId>
+                <version>${jaxen.version}</version>
+                <type>jar</type>
               </coreExtension>
             </coreExtensions>
           </configuration>

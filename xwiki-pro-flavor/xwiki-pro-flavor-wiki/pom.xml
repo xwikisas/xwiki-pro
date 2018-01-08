@@ -25,7 +25,7 @@
   <parent>
     <groupId>com.xwiki.pro</groupId>
     <artifactId>xwiki-pro-flavor</artifactId>
-    <version>9.11-1-SNAPSHOT</version>
+    <version>8.4.5-SNAPSHOT</version>
   </parent>
   <artifactId>xwiki-pro-flavor-wiki</artifactId>
   <name>XWiki Pro - Flavor - Wiki</name>
@@ -59,4 +59,44 @@
       <optional>true</optional>
     </dependency>
   </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.xwiki.commons</groupId>
+        <artifactId>xwiki-commons-tool-xar-plugin</artifactId>
+        <version>${commons.version}</version>
+        <configuration>
+          <!-- Perform some transformations specific to (sub) wikis -->
+          <transformations>
+            <!-- We override rights below in order to not give explicit view permissions to guest and groups.
+                 This is done so that it's possible, directly from the main wiki, with a single click, to prevent
+                 view right to Guest and users to the main wiki + all subwikis. Otherwise if the view right was set
+                 explicitly, it would require, to navigate to each subwiki's administration and change the permission.
+                 This is made possible by the fact that rights are inherited from the main wiki when not set. -->
+            <!-- Specify different rights for XWiki.XWikiGuest -->
+            <transformation>
+              <artifact>org.xwiki.platform:xwiki-platform-distribution-flavor</artifact>
+              <file>XWiki/XWikiPreferences.xml</file>
+              <xpath>xwikidoc/object[property/users[text()="XWiki.XWikiGuest"]]/property/levels</xpath>
+              <value>register</value>
+            </transformation>
+            <!-- Specify different rights for XWiki.XWikiAllGroup -->
+            <transformation>
+              <artifact>org.xwiki.platform:xwiki-platform-distribution-flavor</artifact>
+              <file>XWiki/XWikiPreferences.xml</file>
+              <xpath>xwikidoc/object[property/groups[contains(text(),"XWiki.XWikiAllGroup")]]/property/levels</xpath>
+              <value>edit,comment,script,register</value>
+            </transformation>
+            <!-- Specify different rights for XWiki.XWikiAdminGroup -->
+            <transformation>
+              <artifact>org.xwiki.platform:xwiki-platform-distribution-flavor</artifact>
+              <file>XWiki/XWikiPreferences.xml</file>
+              <xpath>xwikidoc/object[property/groups[contains(text(),"XWiki.XWikiAdminGroup")]]/property/levels</xpath>
+              <value>admin</value>
+            </transformation>
+          </transformations>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>

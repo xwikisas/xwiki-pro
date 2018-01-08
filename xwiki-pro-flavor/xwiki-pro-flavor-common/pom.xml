@@ -25,7 +25,7 @@
   <parent>
     <groupId>com.xwiki.pro</groupId>
     <artifactId>xwiki-pro-flavor</artifactId>
-    <version>9.11-1-SNAPSHOT</version>
+    <version>8.4.5-SNAPSHOT</version>
   </parent>
   <artifactId>xwiki-pro-flavor-common</artifactId>
   <name>XWiki Pro - Flavor - Common</name>
@@ -33,15 +33,15 @@
   <description>The set of wiki pages and applications to be installed both on the main wiki and on subwikis.</description>
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>xwiki-pro-ui</artifactId>
-      <version>${project.version}</version>
+      <groupId>org.xwiki.enterprise</groupId>
+      <artifactId>xwiki-enterprise-ui-common</artifactId>
+      <version>${platform.version}</version>
       <type>xar</type>
     </dependency>
     <dependency>
-      <groupId>org.xwiki.platform</groupId>
-      <artifactId>xwiki-platform-distribution-flavor-common</artifactId>
-      <version>${platform.version}</version>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>xwiki-pro-ui</artifactId>
+      <version>${project.version}</version>
       <type>xar</type>
     </dependency>
   </dependencies>

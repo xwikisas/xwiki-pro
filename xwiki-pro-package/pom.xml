@@ -25,7 +25,7 @@
   <parent>
     <groupId>com.xwiki.pro</groupId>
     <artifactId>xwiki-pro</artifactId>
-    <version>9.11-1-SNAPSHOT</version>
+    <version>8.4.5-SNAPSHOT</version>
   </parent>
   <artifactId>xwiki-pro-package</artifactId>
   <name>XWiki Pro - Package</name>
@@ -135,9 +135,9 @@
     <!-- Free Apps -->
     <!--           -->
     <dependency>
-      <groupId>org.xwiki.contrib.blog</groupId>
-      <artifactId>application-blog-ui</artifactId>
-      <version>9.6</version>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-menu-ui</artifactId>
+      <version>${platform.version}</version>
       <type>xar</type>
       <scope>runtime</scope>
       <optional>true</optional>

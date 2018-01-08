@@ -25,13 +25,23 @@
   <parent>
     <groupId>com.xwiki.parent</groupId>
     <artifactId>xwikisas-parent-platform</artifactId>
-    <version>9.11-1</version>
+    <version>8.4.5</version>
   </parent>
   <groupId>com.xwiki.pro</groupId>
   <artifactId>xwiki-pro</artifactId>
-  <version>9.11-1-SNAPSHOT</version>
+  <version>8.4.5-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>XWiki Pro - Parent POM</name>
+  <properties>
+    <!-- The recommended version of known extensions to use -->
+    <xwiki.extension.recommendedVersions>
+      org.xwiki.commons:.*/[${commons.version}],
+      org.xwiki.rendering:.*/[${rendering.version}],
+      org.xwiki.platform:.*/[${platform.version}],
+      org.xwiki.enterprise:.*/[${platform.version}],
+    </xwiki.extension.recommendedVersions>
+    <jaxen.version>1.1.6</jaxen.version>
+  </properties>
   <scm>
     <connection>scm:git:https://github.com/xwikisas/xwiki-pro.git</connection>
     <developerConnection>scm:git:https://github.com/xwikisas/xwiki-pro.git</developerConnection>
@@ -322,4 +332,22 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.xwiki.commons</groupId>
+          <artifactId>xwiki-commons-tool-extension-plugin</artifactId>
+          <version>9.11</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <extensions>
+      <!-- Needed to add support for the "xip" packaging -->
+      <extension>
+        <groupId>org.xwiki.commons</groupId>
+        <artifactId>xwiki-commons-tool-extension-plugin</artifactId>
+      </extension>
+    </extensions>
+  </build>
 </project>
