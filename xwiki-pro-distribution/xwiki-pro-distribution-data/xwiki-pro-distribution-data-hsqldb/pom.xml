@@ -62,6 +62,16 @@
           </dependency>
         </dependencies>
       </plugin>
+      <!-- Step 3: The Packager plugin installs the Licensor UI on the main wiki and we need it on the root namespace. -->
+      <!-- We can't transform the extension descriptor unless it is namespace well formed. -->
+      <plugin>
+        <groupId>com.google.code.maven-replacer-plugin</groupId>
+        <artifactId>replacer</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>xml-maven-plugin</artifactId>
+      </plugin>
       <!-- Step 3: Zip the generated data -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

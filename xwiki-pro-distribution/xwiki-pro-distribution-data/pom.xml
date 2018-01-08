@@ -146,6 +146,8 @@
               </goals>
               <configuration>
                 <includes>
+                  <!-- It seems the XARs are imported in reverse order so keep this first because it overwrites the
+                    XWiki.XWikiAdminGroup page from the flavor.-->
                   <include>
                     <groupId>org.xwiki.enterprise</groupId>
                     <artifactId>xwiki-enterprise-ui-admin-user</artifactId>
@@ -172,7 +174,55 @@
             </execution>
           </executions>
         </plugin>
-        <!-- Step 3: Zip the generated data -->
+        <!-- Step 3: The Packager plugin installs the Licensor UI on the main wiki and we need it on the root namespace. -->
+        <!-- We can't transform the extension descriptor unless it is namespace well formed. -->
+        <plugin>
+          <groupId>com.google.code.maven-replacer-plugin</groupId>
+          <artifactId>replacer</artifactId>
+          <version>1.5.3</version>
+          <executions>
+            <execution>
+              <phase>prepare-package</phase>
+              <goals>
+                <goal>replace</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <includes>
+              <include>${project.build.directory}/data/extension/repository/com%2Exwiki%2Elicensing%3Aapplication-licensing-licensor-ui/**/*.xed</include>
+            </includes>
+            <replacements>
+              <replacement>
+                <token>wiki:xwiki</token>
+                <value>wiki.xwiki</value>
+              </replacement>
+            </replacements>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>xml-maven-plugin</artifactId>
+          <executions>
+            <execution>
+              <phase>prepare-package</phase>
+              <goals>
+                <goal>transform</goal>
+              </goals>
+              <configuration>
+                <transformationSets>
+                  <transformationSet>
+                    <dir>${project.build.directory}/data/extension/repository/com%2Exwiki%2Elicensing%3Aapplication-licensing-licensor-ui</dir>
+                    <includes>**/*.xed</includes>
+                    <stylesheet>${basedir}/src/assemble/installOnRoot.xsl</stylesheet>
+                    <outputDir>${project.build.directory}/data/extension/repository/com%2Exwiki%2Elicensing%3Aapplication-licensing-licensor-ui</outputDir>
+                  </transformationSet>
+                </transformationSets>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <!-- Step 4: Zip the generated data -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-assembly-plugin</artifactId>
