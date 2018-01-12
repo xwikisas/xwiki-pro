@@ -57,9 +57,7 @@
   <build>
     <pluginManagement>
       <plugins>
-        <!-- Step 1: Copy and filter the Hibernate config file which will be used by the packager
-           plugin -->
-        <!-- Step 2: Import the XAR dependencies into the database -->
+        <!-- Generate a full XWiki permanent directory and import the XAR dependencies into the database. -->
         <plugin>
           <groupId>org.xwiki.platform</groupId>
           <artifactId>xwiki-platform-tool-packager-plugin</artifactId>
@@ -174,7 +172,7 @@
             </execution>
           </executions>
         </plugin>
-        <!-- Step 3: The Packager plugin installs the Licensor UI on the main wiki and we need it on the root namespace. -->
+        <!-- The Packager plugin installs the Licensor UI on the main wiki and we need it on the root namespace. -->
         <!-- We can't transform the extension descriptor unless it is namespace well formed. -->
         <plugin>
           <groupId>com.google.code.maven-replacer-plugin</groupId>
@@ -222,7 +220,7 @@
             </execution>
           </executions>
         </plugin>
-        <!-- Step 4: Zip the generated data -->
+        <!-- Zip the generated permanent directory (data dir) -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-assembly-plugin</artifactId>
