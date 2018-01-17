@@ -20,7 +20,7 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 -->
 
-<xwikidoc version="1.2" reference="XWiki.Pro.Translations" locale="">
+<xwikidoc version="1.3" reference="XWiki.Pro.Translations" locale="">
   <web>XWiki.Pro</web>
   <name>Translations</name>
   <language/>
@@ -39,7 +39,8 @@
   <minorEdit>false</minorEdit>
   <syntaxId>plain/1.0</syntaxId>
   <hidden>true</hidden>
-  <content>licensor.ownedLicense.label=I already have a license</content>
+  <content>licensor.ownedLicense.label=I already have a license
+xwiki.pro.configuration.title=XWiki Pro</content>
   <object>
     <name>XWiki.Pro.Translations</name>
     <number>0</number>
