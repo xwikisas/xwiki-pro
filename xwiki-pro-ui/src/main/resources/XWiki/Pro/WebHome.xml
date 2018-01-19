@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.1" encoding="UTF-8"?>
 
 <!--
  * See the NOTICE file distributed with this work for additional
@@ -42,50 +42,106 @@
   <content>{{include reference="Licenses.Code.VelocityMacros"/}}
 
 {{velocity}}
-#set ($extensionId = 'com.xwiki.pro:xwiki-pro-ui')
+#set ($extensionManager = $services.extension)
+#set ($xwikiProUIId = 'com.xwiki.pro:xwiki-pro-ui')
 #set ($namespace = "wiki:$xcontext.database")
-#set ($extension = $services.extension.installed.getInstalledExtension($extensionId, $namespace))
-#set ($license = $services.licensing.licensor.getLicenseForExtension($extension.id))
+#set ($xwikiProUI = $extensionManager.installed.getInstalledExtension($xwikiProUIId, $namespace))
+#set ($license = $services.licensing.licensor.getLicenseForExtension($xwikiProUI.id))
 ## Check if the modal popup should be displayed in the current page
 #displayInPage
 #if ((!$license || $license.expirationDate == 0) &amp;&amp; $displayInPage)
-  #set($discard = $xwiki.jsx.use('Licenses.WebHome'))
-  #set($discard = $xwiki.ssx.use('Licenses.WebHome'))
-  #set($discard = $xwiki.jsx.use('XWiki.Pro.WebHome'))
+  #set ($discard = $xwiki.jsx.use('Licenses.WebHome'))
+  #set ($discard = $xwiki.ssx.use('Licenses.WebHome'))
+  #set ($discard = $xwiki.jsx.use('XWiki.Pro.WebHome'))
+  ## Load the XWiki Pro css only in edit mode, because the overflow must be disabled and this will cause issues
+  ## in edit mode as we won't be able to scroll in order to se the bottom buttons (preview, save, cancel).
+  #if ($xcontext.action == 'view')
+    #set ($discard = $xwiki.ssx.use('XWiki.Pro.WebHome'))
+  #end
   {{html clean=false}}
-    &lt;div id="xWikiProModal" class="modal fade" role="dialog"&gt;
-      &lt;div class="modal-dialog"&gt;
-        &lt;div class="modal-content"&gt;
-          &lt;div class="modal-header"&gt;
-            &lt;button type="button" class="close" data-dismiss="modal"&gt;&amp;times;&lt;/button&gt;
-            &lt;h4 class="modal-title"&gt;$services.localization.render('licensor.ownerDetails.hint')&lt;/h4&gt;
-          &lt;/div&gt;
-          &lt;div class="modal-body"&gt;
-            &lt;form id="ownerDetails" target="_blank" class="xform" action="${storeBuyURL}" method="post"&gt;
-              &lt;dl&gt;
-                #getOwnerFormFields
-                #getInstanceIdInput(true)
-              &lt;/dl&gt;
-            &lt;/form&gt;
-          &lt;/div&gt;
-          &lt;div class="modal-footer" id="licenseManager"&gt;
-            #set($customButtons = [])
-            ## Add the "I already have a license" button in the same container along with the "Buy" and "Get Trial"
-            ## buttons.
-            #set ($discard = $customButtons.add(['PAID', 'default', 'owned']))
-            #licenseActions($license $extension $userCount)
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
+    #getLicenseStep
+    #registerLicenseStep
+    #chooseExtensionsStep
   {{/html}}
 #end
+##
+#macro (getLicenseStep)
+  #stepStart('getLicense')
+    &lt;div class="modal-body"&gt;
+      &lt;p&gt;$services.localization.render('licensor.ownerDetails.hint')&lt;/p&gt;
+      &lt;form id="ownerDetails" target="_blank" class="xform" action="${storeBuyURL}" method="post"&gt;
+        &lt;dl&gt;
+          #getOwnerFormFields
+          #getInstanceIdInput(true)
+        &lt;/dl&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-footer" id="licenseManager"&gt;
+      #set($customButtons = [])
+      ## In order to have the "I already have a license" in the same line with "Buy" and "Get trial", I had
+      ## to add it in the license actions and name it "OTHER" since it doesn't request anything.
+      #set ($discard = $customButtons.add(['OTHER', 'default registerLicenseButton', 'owned']))
+      #licenseActions($license $xwikiProUI $userCount)
+    &lt;/div&gt;
+  #stepEnd
+#end
+##
+#macro (registerLicenseStep)
+  #stepStart('registerLicense')
+    &lt;form id="addLicense" class="xform" action="" method="post"&gt;
+      &lt;div class="modal-body"&gt;
+      &lt;p&gt;$services.localization.render('licensor.addLicense.hint')&lt;/p&gt;
+        &lt;textarea name="license" id="license" rows="5"&gt;&lt;/textarea&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-footer"&gt;
+        &lt;button type="submit" class="btn btn-success"&gt;
+          $services.localization.render('xwiki.pro.wizard.registerLicense.register')
+        &lt;/button&gt;
+        &lt;button type="button" class="btn btn-primary" id="newLicenseButton"&gt;
+          $services.localization.render('xwiki.pro.wizard.registerLicense.newLicense')
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  #stepEnd
+#end
+##
+#macro (chooseExtensionsStep)
+  #stepStart('chooseExtensions')
+    &lt;form id="installExtensions" class="xform" action="" method="post"&gt;
+      &lt;div class="modal-body"&gt;
+        #set ($xwikiproAdminURL = $xwiki.getURL('XWiki.XWikiPreferences', 'admin', 'editor=globaladmin&amp;section=XWiki.Pro.Configuration'))
+        &lt;p&gt;$services.localization.render('xwiki.pro.wizard.chooseExtensions.hint', ["&lt;a href='$xwikiproAdminURL'&gt;", '&lt;/a&gt;'])&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-footer"&gt;
+        &lt;button type="button" class="btn btn-default" data-dismiss="modal"&gt;
+          $services.localization.render('xwiki.pro.wizard.chooseExtensions.close')
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  #stepEnd
+#end
+##
+#macro (stepStart $stepId)
+  &lt;div id="$stepId" class="modal fade" role="dialog"&gt;
+    &lt;div class="modal-dialog"&gt;
+      &lt;div class="modal-content"&gt;
+        &lt;div class="modal-header"&gt;
+          &lt;button type="button" class="close" data-dismiss="modal"&gt;&amp;times;&lt;/button&gt;
+          &lt;h4 class="modal-title"&gt;$services.localization.render("xwiki.pro.wizard.${stepId}.title")&lt;/h4&gt;
+        &lt;/div&gt;
+#end
+##
+#macro (stepEnd)
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+#end
+##
 #macro (displayInPage)
   #set ($displayInPage = true)
   ## Do not display the popup in the pages that already provide the onwer's details form
-  #if ($xwiki.getURL('Licenses.WebHome') == $xwiki.getURL($doc.documentReference) ||
-       $xwiki.getURL('XWiki.XWikiPreferences', 'admin', 'editor=globaladmin&amp;section=Licenses') ==
-       $xwiki.getURL($doc.documentReference, 'admin', "editor=${request.editor}&amp;section=${request.section}"))
+  #if ($doc.fullName.equals('Licenses.WebHome') ||
+    ($doc.fullName.equals('XWiki.XWikiPreferences') &amp;&amp; $xcontext.action.equals('admin') &amp;&amp; $request.section.equals('Licenses')))
     #set ($displayInPage = false)
   #end
 #end
@@ -173,10 +229,210 @@
     </property>
     <property>
       <code>require(['jquery', 'bootstrap'], function ($) {
+  var checkSubmit = function(ownerDetailsForm) {
+    // check the input fields to be filled with data
+    var doSubmit = true;
+    var focus = true;
+    ownerDetailsForm.find('input:visible').each(function() {
+      $(this).removeClass('required');
+      if (!$(this).val()) {
+        // Focus on first element that needs to be filled with data
+        if (focus) {
+          $(this).focus();
+          focus = false;
+        }
+        doSubmit = false;
+        $(this).addClass('required');
+        $(this).attr('placeholder', "${services.localization.render('licensor.ownerDetails.missingData')}");
+      }
+    });
+    return doSubmit;
+  };
   $(document).ready(function() {
-    $('#xWikiProModal').modal();
+    var getLicense = $('#getLicense');
+    var registerLicense = $('#registerLicense');
+    var chooseExtensions = $('#chooseExtensions');
+    getLicense.modal();
+    getLicense.on('shown.bs.modal', function() {
+      $('#licenseManager').on('click', '.licenseButton', function() {
+        // We have to be sure that the data is filled before we navigate to another modal.
+        if (checkSubmit($('#ownerDetails'))) {
+          getLicense.modal('hide');
+          if ($(this).is($('.registerLicenseButton'))) {
+            registerLicense.modal();
+          } else {
+            chooseExtensions.modal();
+          }
+        }
+      });
+    });
+    registerLicense.on('shown.bs.modal', function() {
+      $('#newLicenseButton').click(function() {
+        registerLicense.modal('hide');
+        // make sure that the buttons are enabled before returning to getLicense modal
+        $('.licenseButton').each(function() {
+          $(this).prop('disabled', false);
+        });
+        getLicense.modal();
+      });
+    });
   });
 });</code>
+    </property>
+    <property>
+      <name/>
+    </property>
+    <property>
+      <parse>1</parse>
+    </property>
+    <property>
+      <use>onDemand</use>
+    </property>
+  </object>
+  <object>
+    <name>XWiki.Pro.WebHome</name>
+    <number>0</number>
+    <className>XWiki.StyleSheetExtension</className>
+    <guid>a4d5a2cc-0895-4b51-9e21-b0d59343b1ee</guid>
+    <class>
+      <name>XWiki.StyleSheetExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <contenttype>PureText</contenttype>
+        <disabled>0</disabled>
+        <editor>PureText</editor>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <contentType>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>contentType</name>
+        <number>6</number>
+        <prettyName>Content Type</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>CSS|LESS</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </contentType>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage|onDemand|always</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <property>
+      <cache>long</cache>
+    </property>
+    <property>
+      <code>#template('colorThemeInit.vm')
+#body {
+  overflow: hidden;
+}
+.xwikipro-dependencies {
+  height: 500px;
+  list-style: none;
+  padding: 0;
+  overflow-y: scroll;
+}
+.xwikipro-dependencies .extension-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+.xwikipro-dependencies li:not(:last-child) {
+  border-bottom: 1px solid $theme.fieldGradientColor;
+}
+.selectLinks {
+  float: left
+}
+.selectLinks span:first-child:after {
+  content: ' | ';
+  color: $theme.textColor;
+  cursor: default;
+}
+.selectLinks span {
+  cursor: pointer;
+  color: $theme.linkColor;
+}
+.currentInstalled, .otherInstalled {
+  float: right;
+  padding-right: 5px;
+}
+.currentInstalled {
+  color: $theme.notificationSuccessColor;
+}
+.otherInstalled {
+  color: $theme.notificationWarningColor;
+}
+#registerLicense .errormessage {
+  margin-left: 15px;
+  margin-right: 15px;
+}</code>
+    </property>
+    <property>
+      <contentType>CSS</contentType>
     </property>
     <property>
       <name/>
