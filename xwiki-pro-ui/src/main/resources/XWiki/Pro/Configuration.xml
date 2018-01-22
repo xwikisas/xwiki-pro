@@ -48,13 +48,13 @@
   #handleExtensionRequest()
 #else
   #set ($xwikiProUIId = 'com.xwiki.pro:xwiki-pro-ui')
-  #set ($xwikiProUI = $extensionManager.installed.getInstalledExtension($xwikiProUIId, $namespace))
+  #set ($xwikiProUI = $extensionManager.installed.getInstalledExtension($xwikiProUIId, $extensionNamespace))
   #set ($xwikiProPackageId = 'com.xwiki.pro:xwiki-pro-package')
   #set ($xwikiProPackageExtension = $extensionManager.resolve($xwikiProPackageId, $xwikiProUI.version))
   #set ($dependencies = $xwikiProPackageExtension.dependencies)
   &lt;div class="full column"&gt;
   #foreach($dependency in $dependencies)
-    #set ($extension = $extensionManager.resolve($dependency, $namespace))
+    #set ($extension = $extensionManager.resolve($dependency, $extensionNamespace))
     #displayExtension($extension)
   #end
   &lt;/div&gt;
