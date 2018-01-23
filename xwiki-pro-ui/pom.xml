@@ -43,6 +43,11 @@
     <xwiki.extension.licensing.excludedDocuments>
       XWiki.Pro.Configuration
     </xwiki.extension.licensing.excludedDocuments>
+    <!-- The module that declares as dependencies the paid extensions that should be covered by the license generated for
+      this module. -->
+    <xwiki.extension.licensing.packageId>
+      ${project.groupId}:xwiki-pro-package
+    </xwiki.extension.licensing.packageId>
   </properties>
   <dependencies>
     <dependency>
