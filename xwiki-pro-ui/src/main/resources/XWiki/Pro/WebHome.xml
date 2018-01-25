@@ -40,7 +40,8 @@
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
   <content>{{include reference="Licenses.Code.VelocityMacros"/}}
-{{velocity output=false}}
+
+{{velocity output="false"}}
 #macro (getLicenseStep)
   #stepStart('getLicense')
     &lt;div class="modal-body"&gt;
@@ -106,7 +107,6 @@
           &lt;h4 class="modal-title"&gt;$services.localization.render("xwiki.pro.wizard.${stepId}.title")&lt;/h4&gt;
         &lt;/div&gt;
 #end
-
 #macro (stepEnd)
       &lt;/div&gt;
     &lt;/div&gt;
@@ -122,6 +122,7 @@
   #end
 #end
 {{/velocity}}
+
 {{velocity}}
 #set ($extensionManager = $services.extension)
 #set ($xwikiProUIId = 'com.xwiki.pro:xwiki-pro-ui')
