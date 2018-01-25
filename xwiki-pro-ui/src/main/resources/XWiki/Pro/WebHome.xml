@@ -40,31 +40,7 @@
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
   <content>{{include reference="Licenses.Code.VelocityMacros"/}}
-
-{{velocity}}
-#set ($extensionManager = $services.extension)
-#set ($xwikiProUIId = 'com.xwiki.pro:xwiki-pro-ui')
-#set ($namespace = "wiki:$xcontext.database")
-#set ($xwikiProUI = $extensionManager.installed.getInstalledExtension($xwikiProUIId, $namespace))
-#set ($license = $services.licensing.licensor.getLicenseForExtension($xwikiProUI.id))
-## Check if the modal popup should be displayed in the current page
-#displayInPage
-#if ((!$license || $license.expirationDate == 0) &amp;&amp; $displayInPage)
-  #set ($discard = $xwiki.jsx.use('Licenses.WebHome'))
-  #set ($discard = $xwiki.ssx.use('Licenses.WebHome'))
-  #set ($discard = $xwiki.jsx.use('XWiki.Pro.WebHome'))
-  ## Load the XWiki Pro css only in edit mode, because the overflow must be disabled and this will cause issues
-  ## in edit mode as we won't be able to scroll in order to se the bottom buttons (preview, save, cancel).
-  #if ($xcontext.action == 'view')
-    #set ($discard = $xwiki.ssx.use('XWiki.Pro.WebHome'))
-  #end
-  {{html clean=false}}
-    #getLicenseStep
-    #registerLicenseStep
-    #chooseExtensionsStep
-  {{/html}}
-#end
-##
+{{velocity output=false}}
 #macro (getLicenseStep)
   #stepStart('getLicense')
     &lt;div class="modal-body"&gt;
@@ -85,7 +61,7 @@
     &lt;/div&gt;
   #stepEnd
 #end
-##
+
 #macro (registerLicenseStep)
   #stepStart('registerLicense')
     &lt;form id="addLicense" class="xform" action="" method="post"&gt;
@@ -104,7 +80,7 @@
     &lt;/form&gt;
   #stepEnd
 #end
-##
+
 #macro (chooseExtensionsStep)
   #stepStart('chooseExtensions')
     &lt;form id="installExtensions" class="xform" action="" method="post"&gt;
@@ -120,7 +96,7 @@
     &lt;/form&gt;
   #stepEnd
 #end
-##
+
 #macro (stepStart $stepId)
   &lt;div id="$stepId" class="modal fade" role="dialog"&gt;
     &lt;div class="modal-dialog"&gt;
@@ -130,13 +106,13 @@
           &lt;h4 class="modal-title"&gt;$services.localization.render("xwiki.pro.wizard.${stepId}.title")&lt;/h4&gt;
         &lt;/div&gt;
 #end
-##
+
 #macro (stepEnd)
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 #end
-##
+
 #macro (displayInPage)
   #set ($displayInPage = true)
   ## Do not display the popup in the pages that already provide the onwer's details form
@@ -144,6 +120,26 @@
     ($doc.fullName.equals('XWiki.XWikiPreferences') &amp;&amp; $xcontext.action.equals('admin') &amp;&amp; $request.section.equals('Licenses')))
     #set ($displayInPage = false)
   #end
+#end
+{{/velocity}}
+{{velocity}}
+#set ($extensionManager = $services.extension)
+#set ($xwikiProUIId = 'com.xwiki.pro:xwiki-pro-ui')
+#set ($namespace = "wiki:$xcontext.database")
+#set ($xwikiProUI = $extensionManager.installed.getInstalledExtension($xwikiProUIId, $namespace))
+#set ($license = $services.licensing.licensor.getLicenseForExtension($xwikiProUI.id))
+## Check if the modal popup should be displayed in the current page
+#displayInPage
+#if ((!$license || $license.expirationDate == 0) &amp;&amp; $displayInPage)
+  #set ($discard = $xwiki.jsx.use('Licenses.WebHome'))
+  #set ($discard = $xwiki.ssx.use('Licenses.WebHome'))
+  #set ($discard = $xwiki.jsx.use('XWiki.Pro.WebHome'))
+  #set ($discard = $xwiki.ssx.use('XWiki.Pro.WebHome'))
+  {{html clean=false}}
+    #getLicenseStep
+    #registerLicenseStep
+    #chooseExtensionsStep
+  {{/html}}
 #end
 {{/velocity}}</content>
   <object>
@@ -256,13 +252,13 @@
     getLicense.on('shown.bs.modal', function() {
       $('#licenseManager').on('click', '.licenseButton', function() {
         // We have to be sure that the data is filled before we navigate to another modal.
-        if (checkSubmit($('#ownerDetails'))) {
+        // For registering a license step, the owner details are already provided.
+        if ($(this).is($('.registerLicenseButton'))) {
           getLicense.modal('hide');
-          if ($(this).is($('.registerLicenseButton'))) {
-            registerLicense.modal();
-          } else {
-            chooseExtensions.modal();
-          }
+          registerLicense.modal();
+        } else if(checkSubmit($('#ownerDetails'))) {
+          getLicense.modal('hide');
+          chooseExtensions.modal();
         }
       });
     });
@@ -387,46 +383,7 @@
       <cache>long</cache>
     </property>
     <property>
-      <code>#template('colorThemeInit.vm')
-#body {
-  overflow: hidden;
-}
-.xwikipro-dependencies {
-  height: 500px;
-  list-style: none;
-  padding: 0;
-  overflow-y: scroll;
-}
-.xwikipro-dependencies .extension-name {
-  font-size: 16px;
-  font-weight: bold;
-}
-.xwikipro-dependencies li:not(:last-child) {
-  border-bottom: 1px solid $theme.fieldGradientColor;
-}
-.selectLinks {
-  float: left
-}
-.selectLinks span:first-child:after {
-  content: ' | ';
-  color: $theme.textColor;
-  cursor: default;
-}
-.selectLinks span {
-  cursor: pointer;
-  color: $theme.linkColor;
-}
-.currentInstalled, .otherInstalled {
-  float: right;
-  padding-right: 5px;
-}
-.currentInstalled {
-  color: $theme.notificationSuccessColor;
-}
-.otherInstalled {
-  color: $theme.notificationWarningColor;
-}
-#registerLicense .errormessage {
+      <code>#registerLicense .errormessage {
   margin-left: 15px;
   margin-right: 15px;
 }</code>
