@@ -86,8 +86,12 @@
   #stepStart('chooseExtensions')
     &lt;form id="installExtensions" class="xform" action="" method="post"&gt;
       &lt;div class="modal-body"&gt;
-        #set ($xwikiproAdminURL = $xwiki.getURL('XWiki.XWikiPreferences', 'admin', 'editor=globaladmin&amp;section=XWiki.Pro.Configuration'))
-        &lt;p&gt;$services.localization.render('xwiki.pro.wizard.chooseExtensions.hint', ["&lt;a href='$xwikiproAdminURL'&gt;", '&lt;/a&gt;'])&lt;/p&gt;
+        #set ($xwikiproAdminURL = $xwiki.getURL('XWiki.XWikiPreferences', 'admin',
+          'editor=globaladmin&amp;section=XWiki.Pro.Configuration'))
+        &lt;p&gt;
+          $services.localization.render('xwiki.pro.wizard.chooseExtensions.hint',
+            ["&lt;a href='$xwikiproAdminURL'&gt;", '&lt;/a&gt;'])
+        &lt;/p&gt;
       &lt;/div&gt;
       &lt;div class="modal-footer"&gt;
         &lt;button type="button" class="btn btn-default" data-dismiss="modal"&gt;
@@ -116,8 +120,8 @@
 #macro (displayInPage)
   #set ($displayInPage = true)
   ## Do not display the popup in the pages that already provide the onwer's details form
-  #if ($doc.fullName.equals('Licenses.WebHome') ||
-    ($doc.fullName.equals('XWiki.XWikiPreferences') &amp;&amp; $xcontext.action.equals('admin') &amp;&amp; $request.section.equals('Licenses')))
+  #if ($doc.fullName.equals('Licenses.WebHome') || ($doc.fullName.equals('XWiki.XWikiPreferences')
+    &amp;&amp; $xcontext.action.equals('admin') &amp;&amp; $request.section.equals('Licenses')))
     #set ($displayInPage = false)
   #end
 #end
