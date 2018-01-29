@@ -103,7 +103,7 @@
 #end
 
 #macro (stepStart $stepId)
-  &lt;div id="$stepId" class="modal fade" role="dialog"&gt;
+  &lt;div id="$stepId" class="modal" role="dialog"&gt;
     &lt;div class="modal-dialog"&gt;
       &lt;div class="modal-content"&gt;
         &lt;div class="modal-header"&gt;
@@ -253,7 +253,6 @@
     var getLicense = $('#getLicense');
     var registerLicense = $('#registerLicense');
     var chooseExtensions = $('#chooseExtensions');
-    getLicense.modal();
     getLicense.on('shown.bs.modal', function() {
       $('#licenseManager').on('click', '.licenseButton', function() {
         // We have to be sure that the data is filled before we navigate to another modal.
@@ -266,7 +265,7 @@
           chooseExtensions.modal();
         }
       });
-    });
+    }).modal();
     registerLicense.on('shown.bs.modal', function() {
       $('#newLicenseButton').click(function() {
         registerLicense.modal('hide');
