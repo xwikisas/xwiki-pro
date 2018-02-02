@@ -38,7 +38,7 @@
     <dependency>
       <groupId>com.xwiki.activedirectory</groupId>
       <artifactId>application-activedirectory-ui</artifactId>
-      <version>1.4</version>
+      <version>1.5</version>
       <type>xar</type>
       <scope>runtime</scope>
       <optional>true</optional>
@@ -46,7 +46,7 @@
     <dependency>
       <groupId>com.xwiki.diagram</groupId>
       <artifactId>application-diagram</artifactId>
-      <version>1.3</version>
+      <version>1.4</version>
       <type>xar</type>
       <scope>runtime</scope>
       <optional>true</optional>
@@ -54,7 +54,7 @@
     <dependency>
       <groupId>com.xwiki.filemanager</groupId>
       <artifactId>application-filemanager-ui</artifactId>
-      <version>2.1</version>
+      <version>2.2</version>
       <type>xar</type>
       <scope>runtime</scope>
       <optional>true</optional>
@@ -62,7 +62,7 @@
     <dependency>
       <groupId>com.xwiki.forum</groupId>
       <artifactId>application-forum-ui</artifactId>
-      <version>2.3</version>
+      <version>2.4</version>
       <type>xar</type>
       <scope>runtime</scope>
       <optional>true</optional>
@@ -70,7 +70,7 @@
     <dependency>
       <groupId>com.xwiki.googleapps</groupId>
       <artifactId>application-googleapps</artifactId>
-      <version>2.2</version>
+      <version>2.3</version>
       <type>xar</type>
       <scope>runtime</scope>
       <optional>true</optional>
@@ -78,7 +78,7 @@
     <dependency>
       <groupId>com.xwiki.ideas</groupId>
       <artifactId>application-ideas</artifactId>
-      <version>1.9</version>
+      <version>1.10</version>
       <type>xar</type>
       <scope>runtime</scope>
       <optional>true</optional>
@@ -86,7 +86,7 @@
     <dependency>
       <groupId>com.xwiki.meeting</groupId>
       <artifactId>application-meeting-ui</artifactId>
-      <version>1.7</version>
+      <version>1.8</version>
       <type>xar</type>
       <scope>runtime</scope>
       <optional>true</optional>
@@ -94,7 +94,7 @@
     <dependency>
       <groupId>com.xwiki.mocca-calendar</groupId>
       <artifactId>application-mocca-calendar-ui</artifactId>
-      <version>2.6</version>
+      <version>2.7</version>
       <type>xar</type>
       <scope>runtime</scope>
       <optional>true</optional>
@@ -102,7 +102,7 @@
     <dependency>
       <groupId>com.xwiki.office365</groupId>
       <artifactId>application-office365</artifactId>
-      <version>1.2</version>
+      <version>1.3</version>
       <type>xar</type>
       <scope>runtime</scope>
       <optional>true</optional>
@@ -110,7 +110,7 @@
     <dependency>
       <groupId>com.xwiki.onlyoffice-connector</groupId>
       <artifactId>application-onlyoffice-connector-ui</artifactId>
-      <version>1.2</version>
+      <version>1.3</version>
       <type>xar</type>
       <scope>runtime</scope>
       <optional>true</optional>
@@ -118,7 +118,7 @@
     <dependency>
       <groupId>com.xwiki.pdfviewer</groupId>
       <artifactId>macro-pdfviewer-ui</artifactId>
-      <version>1.7</version>
+      <version>1.8</version>
       <type>xar</type>
       <scope>runtime</scope>
       <optional>true</optional>
@@ -126,7 +126,7 @@
     <dependency>
       <groupId>com.xwiki.xpoll</groupId>
       <artifactId>application-xpoll-ui</artifactId>
-      <version>1.7</version>
+      <version>1.8</version>
       <type>xar</type>
       <scope>runtime</scope>
       <optional>true</optional>
@@ -145,7 +145,7 @@
     <dependency>
       <groupId>org.xwiki.contrib</groupId>
       <artifactId>application-faq-ui</artifactId>
-      <version>8.1.3</version>
+      <version>8.2</version>
       <type>xar</type>
       <scope>runtime</scope>
       <optional>true</optional>
