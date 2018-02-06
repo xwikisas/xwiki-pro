@@ -43,20 +43,16 @@
 
 {{velocity}}
 #set ($discard = $xwiki.jsx.use('XWiki.Pro.Configuration'))
+#if ($xcontext.action != 'get')
+  {{info}}$services.localization.render('xwiki.pro.configuration.header'){{/info}}
+#end
+
 {{html clean="false"}}
 #if ($isAjaxRequest)
   #handleExtensionRequest()
 #else
-  #set ($xwikiProUIId = 'com.xwiki.pro:xwiki-pro-ui')
-  #set ($xwikiProUI = $extensionManager.installed.getInstalledExtension($xwikiProUIId, $extensionNamespace))
-  #set ($xwikiProPackageId = 'com.xwiki.pro:xwiki-pro-package')
-  #set ($xwikiProPackageExtension = $extensionManager.resolve($xwikiProPackageId, $xwikiProUI.version))
-  #set ($dependencies = $xwikiProPackageExtension.dependencies)
   &lt;div class="full column"&gt;
-  #foreach($dependency in $dependencies)
-    #set ($extension = $extensionManager.resolve($dependency, $extensionNamespace))
-    #displayExtension($extension)
-  #end
+    &lt;p class="loading"&gt;$services.localization.render('xwiki.pro.configuration.loading')&lt;/p&gt;
   &lt;/div&gt;
 #end
 {{/html}}
@@ -377,10 +373,123 @@
 </code>
     </property>
     <property>
-      <name/>
+      <name>Override the _getServiceURL from the extension.js</name>
     </property>
     <property>
       <parse/>
+    </property>
+    <property>
+      <use>currentPage</use>
+    </property>
+  </object>
+  <object>
+    <name>XWiki.Pro.Configuration</name>
+    <number>1</number>
+    <className>XWiki.JavaScriptExtension</className>
+    <guid>eaca82ef-f395-44e6-b266-a126d776920a</guid>
+    <class>
+      <name>XWiki.JavaScriptExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <contenttype>PureText</contenttype>
+        <disabled>0</disabled>
+        <editor>PureText</editor>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage|onDemand|always</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <property>
+      <cache>long</cache>
+    </property>
+    <property>
+      <code>require(['jquery', 'xwiki-events-bridge'], function($) {
+  $.ajax({
+    method: 'GET',
+    url: new XWiki.Document('GetExtensions', 'XWiki.Pro').getURL('get', 'outputSyntax=plain')
+  }).done(function(response) {
+    var container = $('.full.column');
+    container.html(response);
+    var currentURL = XWiki.currentDocument.getURL(XWiki.contextaction, window.location.search.slice(1));
+    $('form.extension-item').each(function() {
+      $(this).prop('action', currentURL);
+      $(this).find('input[name=xback]').prop('value', currentURL);
+      $(this).find('.hidden').append($('&lt;input&gt;').attr({
+        type: 'hidden',
+        name: 'section',
+        value: 'XWiki.Pro.Configuration'
+      }));
+    });
+    $(document).trigger('xwiki:dom:updated', {'elements': container.toArray()});
+  });
+});</code>
+    </property>
+    <property>
+      <name>Get extensions asynchronously</name>
+    </property>
+    <property>
+      <parse>0</parse>
     </property>
     <property>
       <use>currentPage</use>

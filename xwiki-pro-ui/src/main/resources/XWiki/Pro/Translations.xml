@@ -40,6 +40,8 @@
   <syntaxId>plain/1.0</syntaxId>
   <hidden>true</hidden>
   <content>licensor.ownedLicense.label=I already have a license
+xwiki.pro.configuration.header=This only includes extensions that are bundled in the XWiki Pro package.
+xwiki.pro.configuration.loading=Loading extensions...
 xwiki.pro.configuration.title=XWiki Pro
 xwiki.pro.wizard.chooseExtensions.title=Choose Extensions
 xwiki.pro.wizard.chooseExtensions.hint=The XWiki Pro extensions can be installed from the {0}XWiki Pro{1} admin section.
