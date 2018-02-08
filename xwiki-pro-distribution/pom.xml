@@ -34,6 +34,9 @@
   <packaging>pom</packaging>
   <name>XWiki Pro - Distribution</name>
   <properties>
+    <commons.version>9.11.2</commons.version>
+    <rendering.version>${commons.version}</rendering.version>
+    <platform.version>${commons.version}</platform.version>
     <!-- Flavors known to be valid with the current distribution -->
     <xwiki.extension.knownFlavors>
       com.xwiki.pro:xwiki-pro-flavor-mainwiki/${project.version},
