@@ -25,14 +25,17 @@
   <parent>
     <groupId>com.xwiki.parent</groupId>
     <artifactId>xwikisas-parent-platform</artifactId>
-    <version>9.11.1</version>
+    <version>9.11-2</version>
   </parent>
   <groupId>com.xwiki.pro</groupId>
   <artifactId>xwiki-pro</artifactId>
-  <version>9.11.1-SNAPSHOT</version>
+  <version>9.11.2-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>XWiki Pro - Parent POM</name>
   <properties>
+    <commons.version>9.11.2</commons.version>
+    <rendering.version>${commons.version}</rendering.version>
+    <platform.version>${commons.version}</platform.version>
     <licensing.version>1.8</licensing.version>
   </properties>
   <scm>
