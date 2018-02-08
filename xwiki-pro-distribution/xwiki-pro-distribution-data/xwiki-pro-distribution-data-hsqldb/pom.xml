@@ -25,7 +25,7 @@
   <parent>
     <groupId>com.xwiki.pro</groupId>
     <artifactId>xwiki-pro-distribution-data</artifactId>
-    <version>8.4.5-SNAPSHOT</version>
+    <version>8.4.6-SNAPSHOT</version>
   </parent>
   <artifactId>xwiki-pro-distribution-data-hsqldb</artifactId>
   <name>XWiki Pro - Distribution - Data - HSQLDB</name>
