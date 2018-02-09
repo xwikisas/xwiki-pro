@@ -253,14 +253,21 @@
     var getLicense = $('#getLicense');
     var registerLicense = $('#registerLicense');
     var chooseExtensions = $('#chooseExtensions');
+    var ownerDetailsForm = $('#ownerDetails');
     getLicense.on('shown.bs.modal', function() {
       $('#licenseManager').on('click', '.licenseButton', function() {
         // We have to be sure that the data is filled before we navigate to another modal.
         // For registering a license step, the owner details are already provided.
         if ($(this).hasClass('registerLicenseButton')) {
+          // The licensing module performs the checkSubmit for all the buttons from $('#licenseManager'). This is not
+          // needed for the registerLicenseButton, so we should remove all the required marks applied on the inputs.
+          ownerDetailsForm.find('input:visible').each(function() {
+            $(this).removeClass('required');
+            $(this).removeAttr('placeholder');
+          });
           getLicense.modal('hide');
           registerLicense.modal();
-        } else if(checkSubmit($('#ownerDetails'))) {
+        } else if(checkSubmit(ownerDetailsForm)) {
           getLicense.modal('hide');
           chooseExtensions.modal();
         }
