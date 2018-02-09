@@ -43,13 +43,30 @@
 
 {{velocity}}
 #set ($discard = $xwiki.jsx.use('XWiki.Pro.Configuration'))
+#set ($discard = $xwiki.ssx.use('XWiki.Pro.Configuration'))
 #if ($xcontext.action != 'get')
   {{info}}$services.localization.render('xwiki.pro.configuration.header'){{/info}}
 #end
 
 {{html clean="false"}}
 #if ($isAjaxRequest)
-  #handleExtensionRequest()
+  #if ($request.extensionId)
+      #handleExtensionRequest()
+  #else
+    #set ($xwikiProUIId = 'com.xwiki.pro:xwiki-pro-ui')
+    #set ($xwikiProUI = $extensionManager.installed.getInstalledExtension($xwikiProUIId, $extensionNamespace))
+    #set ($xwikiProPackageId = 'com.xwiki.pro:xwiki-pro-package')
+    #set ($xwikiProPackageExtension = $extensionManager.resolve($xwikiProPackageId, $xwikiProUI.version))
+    #set ($dependencies = $xwikiProPackageExtension.dependencies)
+    #if ($dependencies.size() &gt; 0)
+      #foreach($dependency in $dependencies)
+        #set ($extension = $extensionManager.resolve($dependency, $extensionNamespace))
+        #displayExtension($extension)
+      #end
+    #else
+      $services.localization.render('xwiki.pro.configuration.noResults')
+    #end
+  #end
 #else
   &lt;div class="full column"&gt;
     &lt;p class="loading"&gt;$services.localization.render('xwiki.pro.configuration.loading')&lt;/p&gt;
@@ -467,20 +484,11 @@
       <code>require(['jquery', 'xwiki-events-bridge'], function($) {
   $.ajax({
     method: 'GET',
-    url: new XWiki.Document('GetExtensions', 'XWiki.Pro').getURL('get', 'outputSyntax=plain')
+    // Use the section parameter in order to be added as input field in the form by the extension.vm's code.
+    url: new XWiki.Document('Configuration', 'XWiki.Pro').getURL('get', 'section=XWiki.Pro.Configuration')
   }).done(function(response) {
     var container = $('.full.column');
     container.html(response);
-    var currentURL = XWiki.currentDocument.getURL(XWiki.contextaction, window.location.search.slice(1));
-    $('form.extension-item').each(function() {
-      $(this).prop('action', currentURL);
-      $(this).find('input[name=xback]').prop('value', currentURL);
-      $(this).find('.hidden').append($('&lt;input&gt;').attr({
-        type: 'hidden',
-        name: 'section',
-        value: 'XWiki.Pro.Configuration'
-      }));
-    });
     $(document).trigger('xwiki:dom:updated', {'elements': container.toArray()});
   });
 });</code>
@@ -490,6 +498,122 @@
     </property>
     <property>
       <parse>0</parse>
+    </property>
+    <property>
+      <use>currentPage</use>
+    </property>
+  </object>
+  <object>
+    <name>XWiki.Pro.Configuration</name>
+    <number>0</number>
+    <className>XWiki.StyleSheetExtension</className>
+    <guid>12f1a8d9-5022-4bb8-9c9c-b13c5127b951</guid>
+    <class>
+      <name>XWiki.StyleSheetExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <contenttype>PureText</contenttype>
+        <disabled>0</disabled>
+        <editor>PureText</editor>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <contentType>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>contentType</name>
+        <number>6</number>
+        <prettyName>Content Type</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>CSS|LESS</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </contentType>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage|onDemand|always</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <property>
+      <cache>long</cache>
+    </property>
+    <property>
+      <code>.full.column .loading {
+  background-position: left;
+  padding-left: 25px;
+}</code>
+    </property>
+    <property>
+      <contentType>CSS</contentType>
+    </property>
+    <property>
+      <name/>
+    </property>
+    <property>
+      <parse/>
     </property>
     <property>
       <use>currentPage</use>
