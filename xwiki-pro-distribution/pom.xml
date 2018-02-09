@@ -25,7 +25,7 @@
   <parent>
     <groupId>com.xwiki.parent</groupId>
     <artifactId>xwikisas-parent-platform-distribution</artifactId>
-    <version>8.4-9</version>
+    <version>8.4.6</version>
     <relativePath></relativePath>
   </parent>
   <groupId>com.xwiki.pro</groupId>
@@ -34,9 +34,6 @@
   <packaging>pom</packaging>
   <name>XWiki Pro - Distribution</name>
   <properties>
-    <commons.version>8.4.6</commons.version>
-    <rendering.version>${commons.version}</rendering.version>
-    <platform.version>${commons.version}</platform.version>
     <jaxen.version>1.1.6</jaxen.version>
     <!-- Flavors known to be valid with the current distribution -->
     <xwiki.extension.knownFlavors>
@@ -44,17 +41,6 @@
       com.xwiki.pro:xwiki-pro-flavor-wiki/${project.version}
     </xwiki.extension.knownFlavors>
   </properties>
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>xwiki-pro</artifactId>
-        <version>${project.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
   <modules>
     <module>xwiki-pro-distribution-data</module>
     <module>xwiki-pro-distribution-debian</module>
