@@ -38,8 +38,7 @@
     <!-- The list of documents that have an implicit unlimited free license. The users can view these documents without
       buying a license or getting a trial license, but they cannot edit or delete them. -->
     <xwiki.extension.licensing.publicDocuments>
-      XWiki.Pro.WebHome,
-      XWiki.Pro.GetExtensions
+      XWiki.Pro.WebHome
     </xwiki.extension.licensing.publicDocuments>
     <xwiki.extension.licensing.excludedDocuments>
       XWiki.Pro.Configuration
