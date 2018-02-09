@@ -40,17 +40,6 @@
       com.xwiki.pro:xwiki-pro-flavor-wiki/${project.version}
     </xwiki.extension.knownFlavors>
   </properties>
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>xwiki-pro</artifactId>
-        <version>${project.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
   <modules>
     <module>xwiki-pro-distribution-data</module>
     <module>xwiki-pro-distribution-debian</module>
