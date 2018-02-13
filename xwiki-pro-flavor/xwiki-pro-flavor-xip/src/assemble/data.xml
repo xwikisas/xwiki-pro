@@ -26,28 +26,10 @@
     <format>zip</format>
   </formats>
   <includeBaseDirectory>false</includeBaseDirectory>
-  <dependencySets>
-    <dependencySet>
-      <includes>
-        <!-- Include the XWiki Pro extensions in the local extension repository for offline installation. -->
-        <include>${project.groupId}:xwiki-pro-flavor-xip</include>
-      </includes>
-      <outputDirectory>extension/repository</outputDirectory>
-      <unpack>true</unpack>
-      <!-- Needed to prevent warning since our project has a pom packaging and is not producing any artifact -->
-      <useProjectArtifact>false</useProjectArtifact>
-    </dependencySet>
-  </dependencySets>
   <fileSets>
-    <!-- Data files -->
     <fileSet>
-      <directory>${project.build.directory}/data/</directory>
+      <directory>${project.build.directory}/data/extension/repository</directory>
       <outputDirectory/>
-    </fileSet>
-    <!-- Add License/Notice files -->
-    <fileSet>
-      <directory>${project.build.directory}/maven-shared-archive-resources/META-INF</directory>
-      <outputDirectory>META-INF</outputDirectory>
     </fileSet>
   </fileSets>
 </assembly>
