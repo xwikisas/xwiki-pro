@@ -88,5 +88,28 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <!-- Attach the zip version in order to overcome "No such archiver: 'xip'"
+      See https://jira.xwiki.org/browse/XCOMMONS-1354 (Maven Assembly Plugin and Maven Dependency Plugin don't know how
+      to unpack XIP files)-->
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <appendAssemblyId>false</appendAssemblyId>
+          <descriptors>
+            <descriptor>${basedir}/src/assemble/data.xml</descriptor>
+          </descriptors>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
