@@ -36,11 +36,19 @@
       <artifactId>hsqldb</artifactId>
       <version>${hsqldb.version}</version>
     </dependency>
+    <!-- We package the XWiki Pro extensions in the local extension repository for offline installation. -->
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>xwiki-pro-flavor-xip</artifactId>
+      <version>${project.version}</version>
+      <!-- We use the zip type instead of xip because Maven Assembly Plugin doesn't know how to unpack xip files
+        (see https://jira.xwiki.org/browse/XCOMMONS-1354). Otherwise we get "No such archiver: 'xip'". -->
+      <type>zip</type>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
-      <!-- Step 1: Copy and filter the Hibernate config file which will be used by the packager
-           plugin -->
+      <!-- Copy and filter the Hibernate config file which will be used by the packager plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-remote-resources-plugin</artifactId>
@@ -50,7 +58,7 @@
           </execution>
         </executions>
       </plugin>
-      <!-- Step 2: Import the XAR dependencies into the database -->
+      <!-- Generate a full XWiki permanent directory and import the XAR dependencies into the database. -->
       <plugin>
         <groupId>org.xwiki.platform</groupId>
         <artifactId>xwiki-platform-tool-packager-plugin</artifactId>
@@ -62,7 +70,7 @@
           </dependency>
         </dependencies>
       </plugin>
-      <!-- Step 3: Zip the generated data -->
+      <!-- Zip the generated data -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>

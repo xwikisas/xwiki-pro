@@ -30,7 +30,7 @@
     <!-- "xwiki" webapp -->
     <dependencySet>
       <includes>
-        <include>com.xwiki.pro:xwiki-pro-distribution-war</include>
+        <include>${project.groupId}:xwiki-pro-distribution-war</include>
       </includes>
       <outputDirectory>webapps/xwiki</outputDirectory>
       <unpack>true</unpack>
@@ -107,7 +107,7 @@
     <!-- Unpack the data files to package it in the distribution -->
     <dependencySet>
       <includes>
-        <include>com.xwiki.pro:xwiki-pro-distribution-data-hsqldb</include>
+        <include>${project.groupId}:xwiki-pro-distribution-data-hsqldb</include>
       </includes>
       <outputDirectory>/data</outputDirectory>
       <unpack>true</unpack>
