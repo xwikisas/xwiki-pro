@@ -230,59 +230,36 @@
     </property>
     <property>
       <code>require(['jquery', 'bootstrap'], function ($) {
-  var checkSubmit = function(ownerDetailsForm) {
-    // check the input fields to be filled with data
-    var doSubmit = true;
-    var focus = true;
-    ownerDetailsForm.find('input:visible').each(function() {
-      $(this).removeClass('required');
-      if (!$(this).val()) {
-        // Focus on first element that needs to be filled with data
-        if (focus) {
-          $(this).focus();
-          focus = false;
-        }
-        doSubmit = false;
-        $(this).addClass('required');
-        $(this).attr('placeholder', "${services.localization.render('licensor.ownerDetails.missingData')}");
-      }
-    });
-    return doSubmit;
+  var getLicenseModal = $('#getLicense');
+  var registerLicenseModal = $('#registerLicense');
+  var chooseExtensionsModal = $('#chooseExtensions');
+
+  // Focus the first visible input field.
+  var focusFirstVisibleInput = function() {
+    $(this).find('.modal-body :input:visible:enabled').first().focus();
   };
-  $(document).ready(function() {
-    var getLicense = $('#getLicense');
-    var registerLicense = $('#registerLicense');
-    var chooseExtensions = $('#chooseExtensions');
-    var ownerDetailsForm = $('#ownerDetails');
-    getLicense.on('shown.bs.modal', function() {
-      $('#licenseManager').on('click', '.licenseButton', function() {
-        // We have to be sure that the data is filled before we navigate to another modal.
-        // For registering a license step, the owner details are already provided.
-        if ($(this).hasClass('registerLicenseButton')) {
-          // The licensing module performs the checkSubmit for all the buttons from $('#licenseManager'). This is not
-          // needed for the registerLicenseButton, so we should remove all the required marks applied on the inputs.
-          ownerDetailsForm.find('input:visible').each(function() {
-            $(this).removeClass('required');
-            $(this).removeAttr('placeholder');
-          });
-          getLicense.modal('hide');
-          registerLicense.modal();
-        } else if(checkSubmit(ownerDetailsForm)) {
-          getLicense.modal('hide');
-          chooseExtensions.modal();
-        }
-      });
-    }).modal();
-    registerLicense.on('shown.bs.modal', function() {
-      $('#newLicenseButton').click(function() {
-        registerLicense.modal('hide');
-        // make sure that the buttons are enabled before returning to getLicense modal
-        $('.licenseButton').each(function() {
-          $(this).prop('disabled', false);
-        });
-        getLicense.modal();
-      });
-    });
+
+  getLicenseModal.on('show.bs.modal', function() {
+    // Clear the validation errors.
+    $(this).find('input.required').removeClass('required').removeAttr('placeholder');
+  }).on('shown.bs.modal', focusFirstVisibleInput).on('click', '.licenseButton', function() {
+    // We have to be sure that the data is filled before we navigate to another modal.
+    // For registering a license step, the owner details are already provided in the license.
+    if ($(this).hasClass('registerLicenseButton')) {
+      getLicenseModal.modal('hide');
+      registerLicenseModal.modal();
+    } else if (getLicenseModal.find('.required').size() === 0) {
+      getLicenseModal.modal('hide');
+      chooseExtensionsModal.modal();
+    }
+  }).modal();
+
+  registerLicenseModal.on('show.bs.modal', function() {
+    // Clear the error message.
+    $(this).find('.errormessage').remove();
+  }).on('shown.bs.modal', focusFirstVisibleInput).on('click', '#newLicenseButton', function() {
+    registerLicenseModal.modal('hide');
+    getLicenseModal.modal();
   });
 });</code>
     </property>
