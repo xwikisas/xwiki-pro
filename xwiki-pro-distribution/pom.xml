@@ -26,11 +26,11 @@
     <groupId>com.xwiki.parent</groupId>
     <artifactId>xwikisas-parent-platform-distribution</artifactId>
     <version>10.0</version>
-    <relativePath></relativePath>
+    <relativePath />
   </parent>
   <groupId>com.xwiki.pro</groupId>
   <artifactId>xwiki-pro-distribution</artifactId>
-  <version>10.0-SNAPSHOT</version>
+  <version>10.0</version>
   <packaging>pom</packaging>
   <name>XWiki Pro - Distribution</name>
   <properties>
@@ -46,4 +46,8 @@
     <module>xwiki-pro-distribution-jetty-hsqldb</module>
     <module>xwiki-pro-distribution-war</module>
   </modules>
+
+  <scm>
+    <tag>xwiki-pro-10.0</tag>
+  </scm>
 </project>
