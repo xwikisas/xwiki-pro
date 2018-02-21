@@ -47,6 +47,9 @@
     &lt;div class="modal-body"&gt;
       &lt;p&gt;$services.localization.render('licensor.ownerDetails.hint')&lt;/p&gt;
       &lt;form id="ownerDetails" target="_blank" class="xform" action="${storeBuyURL}" method="post"&gt;
+        &lt;div class="hidden"&gt;
+          &lt;input type="hidden" name="form_token" value="$!escapetool.xml($services.csrf.token)" /&gt;
+        &lt;/div&gt;
         &lt;dl&gt;
           #getOwnerFormFields
           #getInstanceIdInput(true)
@@ -54,11 +57,14 @@
       &lt;/form&gt;
     &lt;/div&gt;
     &lt;div class="modal-footer" id="licenseManager"&gt;
-      #set($customButtons = [])
-      ## In order to have the "I already have a license" in the same line with "Buy" and "Get trial", I had
-      ## to add it in the license actions and name it "OTHER" since it doesn't request anything.
-      #set ($discard = $customButtons.add(['OTHER', 'default registerLicenseButton', 'owned']))
-      #licenseActions($license $xwikiProUI $userCount)
+      #set ($updateLicensesButton = '&lt;button id="updateLicenses" class="btn btn-success"&gt;' +
+        $escapetool.xml($services.localization.render('xwiki.pro.wizard.getLicense.update')) + '&lt;/button&gt;')
+      #set ($actions = [$updateLicensesButton])
+      #getLicenseActions($license $xwikiProUI $actions)
+      #set ($registerLicenseButton = '&lt;button class="btn btn-default registerLicense"&gt;' +
+        $escapetool.xml($services.localization.render("xwiki.pro.wizard.getLicense.register")) + '&lt;/button&gt;')
+      #set ($discard = $actions.add($registerLicenseButton))
+      $stringtool.join($actions, '')
     &lt;/div&gt;
   #stepEnd
 #end
@@ -67,14 +73,15 @@
   #stepStart('registerLicense')
     &lt;form id="addLicense" class="xform" action="" method="post"&gt;
       &lt;div class="modal-body"&gt;
-      &lt;p&gt;$services.localization.render('licensor.addLicense.hint')&lt;/p&gt;
+        &lt;p&gt;$services.localization.render('licensor.addLicense.hint')&lt;/p&gt;
         &lt;textarea name="license" id="license" rows="5"&gt;&lt;/textarea&gt;
+        &lt;input type="hidden" name="form_token" value="$!escapetool.xml($services.csrf.token)" /&gt;
       &lt;/div&gt;
       &lt;div class="modal-footer"&gt;
         &lt;button type="submit" class="btn btn-success"&gt;
           $services.localization.render('xwiki.pro.wizard.registerLicense.register')
         &lt;/button&gt;
-        &lt;button type="button" class="btn btn-primary" id="newLicenseButton"&gt;
+        &lt;button type="button" class="btn btn-default" id="newLicenseButton"&gt;
           $services.localization.render('xwiki.pro.wizard.registerLicense.newLicense')
         &lt;/button&gt;
       &lt;/div&gt;
@@ -239,25 +246,31 @@
     $(this).find('.modal-body :input:visible:enabled').first().focus();
   };
 
+  // Show the Choose Extensions step after the XWiki Pro license is added.
+  $(document).on('xwiki:license:added xwiki:license:updated', function() {
+    getLicenseModal.modal('hide');
+    registerLicenseModal.modal('hide');
+    chooseExtensionsModal.modal();
+  });
+
   getLicenseModal.on('show.bs.modal', function() {
     // Clear the validation errors.
     $(this).find('input.required').removeClass('required').removeAttr('placeholder');
-  }).on('shown.bs.modal', focusFirstVisibleInput).on('click', '.licenseButton', function() {
-    // We have to be sure that the data is filled before we navigate to another modal.
-    // For registering a license step, the owner details are already provided in the license.
-    if ($(this).hasClass('registerLicenseButton')) {
-      getLicenseModal.modal('hide');
-      registerLicenseModal.modal();
-    } else if (getLicenseModal.find('.required').size() === 0) {
-      getLicenseModal.modal('hide');
-      chooseExtensionsModal.modal();
-    }
+    // Show the Buy button and hide the Update button.
+    $(this).find('.licenseButton-paid, .licenseButton-extendPaid').show();
+    $(this).find('#updateLicenses').hide();
+  }).on('shown.bs.modal', focusFirstVisibleInput).on('click', '.registerLicense', function() {
+    // Get to the Register License step.
+    getLicenseModal.modal('hide');
+    registerLicenseModal.modal();
+  }).on('click', '.licenseButton-paid, .licenseButton-extendPaid', function() {
+    // Replace the Buy button with the Update button.
+    $(this).hide().prev('#updateLicenses').show();
   }).modal();
 
-  registerLicenseModal.on('show.bs.modal', function() {
-    // Clear the error message.
-    $(this).find('.errormessage').remove();
-  }).on('shown.bs.modal', focusFirstVisibleInput).on('click', '#newLicenseButton', function() {
+  registerLicenseModal.on('shown.bs.modal', focusFirstVisibleInput)
+  .on('click', '#newLicenseButton', function() {
+    // Get back to the Get License step.
     registerLicenseModal.modal('hide');
     getLicenseModal.modal();
   });
