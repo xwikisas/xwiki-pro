@@ -39,19 +39,19 @@
   <minorEdit>false</minorEdit>
   <syntaxId>plain/1.0</syntaxId>
   <hidden>true</hidden>
-  <content>licensor.ownedLicense.label=I already have a license
-xwiki.pro.configuration.header=The following extensions are included in the XWiki Pro package.
+  <content>xwiki.pro.configuration.header=The following extensions are included in the XWiki Pro package.
 xwiki.pro.configuration.loading=Loading extensions...
 xwiki.pro.configuration.noResults=We couldn't retrieve the list of extensions included in XWiki Pro package. Check your network connection and make sure you have the right extension repositories configured.
 xwiki.pro.configuration.title=XWiki Pro
-xwiki.pro.wizard.chooseExtensions.title=Choose Extensions
-xwiki.pro.wizard.chooseExtensions.hint=The XWiki Pro extensions can be installed from the {0}XWiki Pro{1} admin section.
-xwiki.pro.wizard.chooseExtensions.close=Close
 xwiki.pro.wizard.getLicense.title=Get a License
+xwiki.pro.wizard.getLicense.register=I already have a license
+xwiki.pro.wizard.getLicense.update=Update
 xwiki.pro.wizard.registerLicense.newLicense=I want a new license
 xwiki.pro.wizard.registerLicense.register=Register
 xwiki.pro.wizard.registerLicense.title=Register License
-</content>
+xwiki.pro.wizard.chooseExtensions.title=Choose Extensions
+xwiki.pro.wizard.chooseExtensions.hint=The XWiki Pro extensions can be installed from the {0}XWiki Pro{1} admin section.
+xwiki.pro.wizard.chooseExtensions.close=Close</content>
   <object>
     <name>XWiki.Pro.Translations</name>
     <number>0</number>
