@@ -53,7 +53,6 @@
     <dependency>
       <groupId>com.xwiki.licensing</groupId>
       <artifactId>application-licensing-licensor-api</artifactId>
-      <version>${licensing.version}</version>
       <scope>runtime</scope>
     </dependency>
   </dependencies>

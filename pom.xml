@@ -63,6 +63,13 @@
     affected by that) -->
   <dependencyManagement>
     <dependencies>
+      <!-- The extensions included in XWiki Pro may depend on an older version of the Licensing Application. Let's make
+        sure we use the version bundled with XWiki Pro. -->
+      <dependency>
+        <groupId>com.xwiki.licensing</groupId>
+        <artifactId>application-licensing-licensor-api</artifactId>
+        <version>${licensing.version}</version>
+      </dependency>
       <!-- application-licensing-licensor-api -->
       <dependency>
         <groupId>org.xwiki.commons</groupId>
