@@ -143,10 +143,9 @@
 ## Check if the modal popup should be displayed in the current page
 #displayInPage
 #if ((!$license || $license.expirationDate == 0) &amp;&amp; $displayInPage)
-  #set ($discard = $xwiki.jsx.use('Licenses.WebHome'))
   #set ($discard = $xwiki.ssx.use('Licenses.WebHome'))
+  #set ($discard = $xwiki.jsx.use('Licenses.WebHome'))
   #set ($discard = $xwiki.jsx.use('XWiki.Pro.WebHome'))
-  #set ($discard = $xwiki.ssx.use('XWiki.Pro.WebHome'))
   {{html clean=false}}
     #getLicenseStep
     #registerLicenseStep
@@ -236,21 +235,43 @@
       <cache>long</cache>
     </property>
     <property>
-      <code>require(['jquery', 'bootstrap'], function ($) {
-  var getLicenseModal = $('#getLicense');
-  var registerLicenseModal = $('#registerLicense');
-  var chooseExtensionsModal = $('#chooseExtensions');
-
-  // Focus the first visible input field.
+      <code>/**
+ * XWiki Pro Wizard
+ */
+require(['jquery', 'bootstrap'], function ($) {
+  // Focus the first visible input field from the current step.
   var focusFirstVisibleInput = function() {
     $(this).find('.modal-body :input:visible:enabled').first().focus();
   };
 
+  // We need a flag to determine that the wizard is not closed when one of its steps are closed.
+  var switchingSteps = false;
+  var switchSteps = function(from, to) {
+    switchingSteps = true;
+    try {
+      from.modal('hide');
+      to.modal();
+    } finally {
+      switchingSteps = false;
+    }
+  };
+
+  // The wizard steps.
+  var getLicenseModal = $('#getLicense');
+  var registerLicenseModal = $('#registerLicense');
+  var chooseExtensionsModal = $('#chooseExtensions');
+
+  // Use a deferred object to know when the wizard is closed.
+  var wizardDeferred = $.Deferred();
+  getLicenseModal.add(registerLicenseModal).add(chooseExtensionsModal).on('hidden.bs.modal', function() {
+    if (!switchingSteps) {
+      wizardDeferred.resolve();
+    }
+  });
+
   // Show the Choose Extensions step after the XWiki Pro license is added.
   $(document).on('xwiki:license:added xwiki:license:updated', function() {
-    getLicenseModal.modal('hide');
-    registerLicenseModal.modal('hide');
-    chooseExtensionsModal.modal();
+    switchSteps(getLicenseModal.add(registerLicenseModal), chooseExtensionsModal);
   });
 
   getLicenseModal.on('show.bs.modal', function() {
@@ -261,8 +282,7 @@
     $(this).find('#updateLicenses').hide();
   }).on('shown.bs.modal', focusFirstVisibleInput).on('click', '.registerLicense', function() {
     // Get to the Register License step.
-    getLicenseModal.modal('hide');
-    registerLicenseModal.modal();
+    switchSteps(getLicenseModal, registerLicenseModal);
   }).on('click', '.licenseButton-paid, .licenseButton-extendPaid', function() {
     // Replace the Buy button with the Update button.
     $(this).hide().prev('#updateLicenses').show();
@@ -271,126 +291,37 @@
   registerLicenseModal.on('shown.bs.modal', focusFirstVisibleInput)
   .on('click', '#newLicenseButton', function() {
     // Get back to the Get License step.
-    registerLicenseModal.modal('hide');
-    getLicenseModal.modal();
+    switchSteps(registerLicenseModal, getLicenseModal);
+  });
+
+  // Delay the tour until after the wizard is closed.
+  $(document).on('ajaxSuccess', function(event, response, request, data) {
+    if (data &amp;&amp; $.isArray(data.tours)) {
+      $.each(data.tours, function(index, tour) {
+        if ($.isArray(tour.steps)) {
+          $.each(tour.steps, function(index, step) {
+            // The onShow callback can return a promise to delay the step start. Let's do that.
+            // Note that we're not overwriting onShow here because the JSON format doesn't support functions.
+            step.onShow = function(tour) {
+              // The left/right arrow keys trigger the tour navigation (changing the current step index) even when the
+              // current tour step is pending. Let's block the navigation until the wizard is closed.
+              var next = tour.next;
+              var prev = tour.prev;
+              var end = tour.end;
+              tour.next = tour.prev = tour.end = function() {};
+              return wizardDeferred.promise().done(function() {
+                // Restore the tour navigation now that the wizard is closed.
+                tour.next = next;
+                tour.prev = prev;
+                tour.end = end;
+              });
+            };
+          });
+        }
+      });
+    }
   });
 });</code>
-    </property>
-    <property>
-      <name/>
-    </property>
-    <property>
-      <parse>1</parse>
-    </property>
-    <property>
-      <use>onDemand</use>
-    </property>
-  </object>
-  <object>
-    <name>XWiki.Pro.WebHome</name>
-    <number>0</number>
-    <className>XWiki.StyleSheetExtension</className>
-    <guid>a4d5a2cc-0895-4b51-9e21-b0d59343b1ee</guid>
-    <class>
-      <name>XWiki.StyleSheetExtension</name>
-      <customClass/>
-      <customMapping/>
-      <defaultViewSheet/>
-      <defaultEditSheet/>
-      <defaultWeb/>
-      <nameField/>
-      <validationScript/>
-      <cache>
-        <cache>0</cache>
-        <disabled>0</disabled>
-        <displayType>select</displayType>
-        <multiSelect>0</multiSelect>
-        <name>cache</name>
-        <number>5</number>
-        <prettyName>Caching policy</prettyName>
-        <relationalStorage>0</relationalStorage>
-        <separator> </separator>
-        <separators>|, </separators>
-        <size>1</size>
-        <unmodifiable>0</unmodifiable>
-        <values>long|short|default|forbid</values>
-        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
-      </cache>
-      <code>
-        <contenttype>PureText</contenttype>
-        <disabled>0</disabled>
-        <editor>PureText</editor>
-        <name>code</name>
-        <number>2</number>
-        <prettyName>Code</prettyName>
-        <rows>20</rows>
-        <size>50</size>
-        <unmodifiable>0</unmodifiable>
-        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
-      </code>
-      <contentType>
-        <cache>0</cache>
-        <disabled>0</disabled>
-        <displayType>select</displayType>
-        <multiSelect>0</multiSelect>
-        <name>contentType</name>
-        <number>6</number>
-        <prettyName>Content Type</prettyName>
-        <relationalStorage>0</relationalStorage>
-        <separator> </separator>
-        <separators>|, </separators>
-        <size>1</size>
-        <unmodifiable>0</unmodifiable>
-        <values>CSS|LESS</values>
-        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
-      </contentType>
-      <name>
-        <disabled>0</disabled>
-        <name>name</name>
-        <number>1</number>
-        <prettyName>Name</prettyName>
-        <size>30</size>
-        <unmodifiable>0</unmodifiable>
-        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
-      </name>
-      <parse>
-        <disabled>0</disabled>
-        <displayFormType>select</displayFormType>
-        <displayType>yesno</displayType>
-        <name>parse</name>
-        <number>4</number>
-        <prettyName>Parse content</prettyName>
-        <unmodifiable>0</unmodifiable>
-        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
-      </parse>
-      <use>
-        <cache>0</cache>
-        <disabled>0</disabled>
-        <displayType>select</displayType>
-        <multiSelect>0</multiSelect>
-        <name>use</name>
-        <number>3</number>
-        <prettyName>Use this extension</prettyName>
-        <relationalStorage>0</relationalStorage>
-        <separator> </separator>
-        <separators>|, </separators>
-        <size>1</size>
-        <unmodifiable>0</unmodifiable>
-        <values>currentPage|onDemand|always</values>
-        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
-      </use>
-    </class>
-    <property>
-      <cache>long</cache>
-    </property>
-    <property>
-      <code>#registerLicense .errormessage {
-  margin-left: 15px;
-  margin-right: 15px;
-}</code>
-    </property>
-    <property>
-      <contentType>CSS</contentType>
     </property>
     <property>
       <name/>
