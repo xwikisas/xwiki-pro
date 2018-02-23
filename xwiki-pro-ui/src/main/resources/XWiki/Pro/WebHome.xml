@@ -284,8 +284,10 @@ require(['jquery', 'bootstrap'], function ($) {
     // Get to the Register License step.
     switchSteps(getLicenseModal, registerLicenseModal);
   }).on('click', '.licenseButton-paid, .licenseButton-extendPaid', function() {
-    // Replace the Buy button with the Update button.
-    $(this).hide().prev('#updateLicenses').show();
+    if (getLicenseModal.find('.required').size() === 0) {
+      // Replace the Buy button with the Update button.
+      $(this).hide().prev('#updateLicenses').show();
+    }
   }).modal();
 
   registerLicenseModal.on('shown.bs.modal', focusFirstVisibleInput)
