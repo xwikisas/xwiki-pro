@@ -33,7 +33,7 @@
   <packaging>pom</packaging>
   <name>XWiki Pro - Parent POM</name>
   <properties>
-    <licensing.version>1.10</licensing.version>
+    <licensing.version>1.12.1</licensing.version>
   </properties>
   <scm>
     <connection>scm:git:https://github.com/xwikisas/xwiki-pro.git</connection>
