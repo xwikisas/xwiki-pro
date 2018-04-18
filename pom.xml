@@ -41,7 +41,7 @@
       org.xwiki.enterprise:.*/[${platform.version}],
     </xwiki.extension.recommendedVersions>
     <jaxen.version>1.1.6</jaxen.version>
-    <licensing.version>1.10</licensing.version>
+    <licensing.version>1.12.1</licensing.version>
   </properties>
   <scm>
     <connection>scm:git:https://github.com/xwikisas/xwiki-pro.git</connection>
