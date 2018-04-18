@@ -25,12 +25,12 @@
   <parent>
     <groupId>com.xwiki.parent</groupId>
     <artifactId>xwikisas-parent-platform-distribution</artifactId>
-    <version>9.11.2</version>
+    <version>9.11.4</version>
     <relativePath />
   </parent>
   <groupId>com.xwiki.pro</groupId>
   <artifactId>xwiki-pro-distribution</artifactId>
-  <version>9.11.3-SNAPSHOT</version>
+  <version>9.11.4-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>XWiki Pro - Distribution</name>
   <properties>
