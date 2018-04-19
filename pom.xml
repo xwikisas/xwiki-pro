@@ -34,6 +34,8 @@
   <name>XWiki Pro - Parent POM</name>
   <properties>
     <licensing.version>1.12.1</licensing.version>
+    <!-- We don't have any JAR modules at the moment. -->
+    <xwiki.spoon.skip>true</xwiki.spoon.skip>
   </properties>
   <scm>
     <connection>scm:git:https://github.com/xwikisas/xwiki-pro.git</connection>
