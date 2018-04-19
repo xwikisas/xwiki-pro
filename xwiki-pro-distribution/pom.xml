@@ -30,7 +30,7 @@
   </parent>
   <groupId>com.xwiki.pro</groupId>
   <artifactId>xwiki-pro-distribution</artifactId>
-  <version>8.4.6-1-SNAPSHOT</version>
+  <version>8.4.6-1</version>
   <packaging>pom</packaging>
   <name>XWiki Pro - Distribution</name>
   <properties>
@@ -47,4 +47,8 @@
     <module>xwiki-pro-distribution-jetty-hsqldb</module>
     <module>xwiki-pro-distribution-war</module>
   </modules>
+
+  <scm>
+    <tag>xwiki-pro-8.4.6-1</tag>
+  </scm>
 </project>
