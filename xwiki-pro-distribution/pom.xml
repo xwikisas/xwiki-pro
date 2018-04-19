@@ -25,12 +25,12 @@
   <parent>
     <groupId>com.xwiki.parent</groupId>
     <artifactId>xwikisas-parent-platform-distribution</artifactId>
-    <version>10.0</version>
+    <version>10.2</version>
     <relativePath />
   </parent>
   <groupId>com.xwiki.pro</groupId>
   <artifactId>xwiki-pro-distribution</artifactId>
-  <version>10.1-SNAPSHOT</version>
+  <version>10.2-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>XWiki Pro - Distribution</name>
   <properties>
@@ -46,4 +46,15 @@
     <module>xwiki-pro-distribution-jetty-hsqldb</module>
     <module>xwiki-pro-distribution-war</module>
   </modules>
+  <!-- Avoid enforce-upper-bounds rule complains (they're actually false positives since Extension Manager is not
+    affected by that) -->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-oldcore</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 </project>
