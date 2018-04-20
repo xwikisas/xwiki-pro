@@ -25,7 +25,7 @@
   <parent>
     <groupId>com.xwiki.pro</groupId>
     <artifactId>xwiki-pro-flavor</artifactId>
-    <version>9.11.4-SNAPSHOT</version>
+    <version>9.11.4</version>
   </parent>
   <artifactId>xwiki-pro-flavor-wiki</artifactId>
   <name>XWiki Pro - Flavor - Wiki</name>
