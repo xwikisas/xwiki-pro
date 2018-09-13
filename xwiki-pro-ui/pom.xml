@@ -29,7 +29,7 @@
   </parent>
   <artifactId>xwiki-pro-ui</artifactId>
   <name>XWiki Pro - UI</name>
-  <description>Gives you access to all the paid apps</description>
+  <description>XWiki Pro offers a full set of productivity and business-oriented applications on top of XWiki</description>
   <packaging>xar</packaging>
   <properties>
     <!-- Name to display by the Extension Manager -->
