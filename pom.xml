@@ -38,8 +38,8 @@
     <xwiki.spoon.skip>true</xwiki.spoon.skip>
   </properties>
   <scm>
-    <connection>scm:git:https://github.com/xwikisas/xwiki-pro.git</connection>
-    <developerConnection>scm:git:https://github.com/xwikisas/xwiki-pro.git</developerConnection>
+    <connection>scm:git:git://github.com/xwikisas/xwiki-pro.git</connection>
+    <developerConnection>scm:git:git@github.com:xwikisas/xwiki-pro.git</developerConnection>
     <url>https://github.com/xwikisas/xwiki-pro</url>
     <tag>HEAD</tag>
   </scm>
