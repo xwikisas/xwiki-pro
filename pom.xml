@@ -33,7 +33,7 @@
   <packaging>pom</packaging>
   <name>XWiki Pro - Parent POM</name>
   <properties>
-    <licensing.version>1.13.1</licensing.version>
+    <licensing.version>1.13.2</licensing.version>
     <!-- We don't have any JAR modules at the moment. -->
     <xwiki.spoon.skip>true</xwiki.spoon.skip>
   </properties>
