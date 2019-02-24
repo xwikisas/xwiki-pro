@@ -29,7 +29,7 @@
   </parent>
   <groupId>com.xwiki.pro</groupId>
   <artifactId>xwiki-pro</artifactId>
-  <version>10.4-SNAPSHOT</version>
+  <version>10.4</version>
   <packaging>pom</packaging>
   <name>XWiki Pro - Parent POM</name>
   <properties>
@@ -41,7 +41,7 @@
     <connection>scm:git:git://github.com/xwikisas/xwiki-pro.git</connection>
     <developerConnection>scm:git:git@github.com:xwikisas/xwiki-pro.git</developerConnection>
     <url>https://github.com/xwikisas/xwiki-pro</url>
-    <tag>HEAD</tag>
+    <tag>xwiki-pro-10.4</tag>
   </scm>
   <issueManagement>
     <system>GitHub</system>
