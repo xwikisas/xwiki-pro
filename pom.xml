@@ -33,7 +33,7 @@
   <packaging>pom</packaging>
   <name>XWiki Pro - Parent POM</name>
   <properties>
-    <licensing.version>1.13.6</licensing.version>
+    <licensing.version>1.13.8</licensing.version>
   </properties>
   <scm>
     <connection>scm:git:https://github.com/xwikisas/xwiki-pro.git</connection>
@@ -315,6 +315,13 @@
       <dependency>
         <groupId>org.xwiki.platform</groupId>
         <artifactId>xwiki-platform-uiextension-ui</artifactId>
+        <version>${platform.version}</version>
+        <type>xar</type>
+      </dependency>
+      <!-- application-forum-ui, application-blog-ui -->
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-ratings-ui</artifactId>
         <version>${platform.version}</version>
         <type>xar</type>
       </dependency>
