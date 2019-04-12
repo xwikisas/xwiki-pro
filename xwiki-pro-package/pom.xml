@@ -99,13 +99,6 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
-      <groupId>com.xwiki.office365</groupId>
-      <artifactId>application-office365</artifactId>
-      <version>1.3.7</version>
-      <type>xar</type>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
       <groupId>com.xwiki.onlyoffice-connector</groupId>
       <artifactId>application-onlyoffice-connector-ui</artifactId>
       <version>1.3.8</version>
