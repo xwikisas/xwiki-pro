@@ -43,7 +43,7 @@
 xwiki.pro.configuration.loading=Loading extensions...
 xwiki.pro.configuration.noResults=We couldn't retrieve the list of extensions included in XWiki Pro package. Check your network connection and make sure you have the right extension repositories configured.
 xwiki.pro.configuration.title=XWiki Pro
-xwiki.pro.wizard.getLicense.title=Get a License
+xwiki.pro.wizard.getLicense.title=Get a License for XWiki Pro
 xwiki.pro.wizard.getLicense.register=I already have a license
 xwiki.pro.wizard.getLicense.update=Update
 xwiki.pro.wizard.registerLicense.newLicense=I want a new license
