@@ -32,6 +32,7 @@
   <version>10.7-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>XWiki Pro - Parent POM</name>
+  <description>Extend your wiki with a full set of productivity and business-oriented applications. Benefit from expert technical support for the whole wiki. Try it free.</description>
   <properties>
     <licensing.version>1.14.4</licensing.version>
     <!-- We don't have any JAR modules at the moment. -->
