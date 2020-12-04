@@ -34,7 +34,7 @@
   <name>XWiki Pro - Parent POM</name>
   <description>Extend your wiki with a full set of productivity and business-oriented applications. Benefit from expert technical support for the whole wiki. Try it free.</description>
   <properties>
-    <licensing.version>1.14.4</licensing.version>
+    <licensing.version>1.16.1</licensing.version>
   </properties>
   <scm>
     <connection>scm:git:https://github.com/xwikisas/xwiki-pro.git</connection>
@@ -79,6 +79,12 @@
       <dependency>
         <groupId>org.xwiki.commons</groupId>
         <artifactId>xwiki-commons-crypto-pkix</artifactId>
+        <version>${commons.version}</version>
+      </dependency>
+      <!-- application-activedirectory-ui, application-antivirus-clamav-ui -->
+      <dependency>
+        <groupId>org.xwiki.commons</groupId>
+        <artifactId>xwiki-commons-environment-servlet</artifactId>
         <version>${commons.version}</version>
       </dependency>
       <!-- application-licensing-licensor-api -->
@@ -162,6 +168,22 @@
         <artifactId>xwiki-platform-configuration-default</artifactId>
         <version>${platform.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-container-api</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-container-servlet</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <!-- application-antivirus-clamav-ui -->
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-csrf</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
       <!-- application-licensing-licensor-api -->
       <dependency>
         <groupId>org.xwiki.platform</groupId>
@@ -222,13 +244,29 @@
       <!-- application-meeting-ui -->
       <dependency>
         <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-mail-send-api</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
         <artifactId>xwiki-platform-mail-send-default</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-mail-send-storage</artifactId>
         <version>${platform.version}</version>
       </dependency>
       <!-- application-filemanager-api -->
       <dependency>
         <groupId>org.xwiki.platform</groupId>
         <artifactId>xwiki-platform-oldcore</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <!-- application-diagram-api -->
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-query-manager</artifactId>
         <version>${platform.version}</version>
       </dependency>
       <!-- application-filemanager-ui, application-meeting-ui -->
@@ -265,6 +303,30 @@
       <dependency>
         <groupId>org.xwiki.platform</groupId>
         <artifactId>xwiki-platform-rendering-wikimacro-store</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <!-- application-antivirus-clamav-ui, application-activedirectory-ui, application-diagram -->
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-rendering-xwiki</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <!-- application-filemanager-ui -->
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-resource-api</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <!-- application-filemanager-ui -->
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-resource-servlet</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <!-- application-antivirus-api -->
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-scheduler-api</artifactId>
         <version>${platform.version}</version>
       </dependency>
       <!-- application-faq-ui -->
@@ -319,12 +381,30 @@
         <version>${platform.version}</version>
         <type>xar</type>
       </dependency>
+      <!-- application-antivirus-clamav-ui, application-xpoll-ui, application-faq-ui -->
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-uiextension-api</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
       <!-- application-forum-ui, application-blog-ui -->
       <dependency>
         <groupId>org.xwiki.platform</groupId>
         <artifactId>xwiki-platform-ratings-ui</artifactId>
         <version>${platform.version}</version>
         <type>xar</type>
+      </dependency>
+      <!-- application-diagram-api -->
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-wiki-api</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <!-- application-meeting-ui -->
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>jquery-ui</artifactId>
+        <version>1.11.4</version>
       </dependency>
       <!-- application-googleapps -->
       <dependency>

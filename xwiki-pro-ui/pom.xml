@@ -35,7 +35,7 @@
     <!-- Name to display by the Extension Manager -->
     <xwiki.extension.name>XWiki Pro</xwiki.extension.name>
     <!-- The minimum version of XWiki that is compatible with this extension. -->
-    <xwiki.minimum.version>8.4</xwiki.minimum.version>
+    <xwiki.minimum.version>9.11</xwiki.minimum.version>
     <!-- The list of documents that have an implicit unlimited free license. The users can view these documents without
       buying a license or getting a trial license, but they cannot edit or delete them. -->
     <xwiki.extension.licensing.publicDocuments>
