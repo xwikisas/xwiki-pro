@@ -133,6 +133,13 @@
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
+    <dependency>
+      <groupId>com.xwiki.pro</groupId>
+      <artifactId>xwiki-pro-macros</artifactId>
+      <version>1.0-RC1</version>
+      <type>xar</type>
+      <scope>runtime</scope>
+    </dependency>
     <!--           -->
     <!-- Free Apps -->
     <!--           -->
