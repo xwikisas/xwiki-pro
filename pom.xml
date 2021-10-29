@@ -25,16 +25,16 @@
   <parent>
     <groupId>com.xwiki.parent</groupId>
     <artifactId>xwikisas-parent-platform</artifactId>
-    <version>8.4-12</version>
+    <version>11.10</version>
   </parent>
   <groupId>com.xwiki.pro</groupId>
   <artifactId>xwiki-pro</artifactId>
-  <version>10.7-SNAPSHOT</version>
+  <version>11.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>XWiki Pro - Parent POM</name>
   <description>Extend your wiki with a full set of productivity and business-oriented applications. Benefit from expert technical support for the whole wiki. Try it free.</description>
   <properties>
-    <licensing.version>1.14.4</licensing.version>
+    <licensing.version>1.20</licensing.version>
     <!-- We don't have any JAR modules at the moment. -->
     <xwiki.spoon.skip>true</xwiki.spoon.skip>
   </properties>
@@ -48,6 +48,137 @@
     <system>GitHub</system>
     <url>https://github.com/xwikisas/xwiki-pro/issues</url>
   </issueManagement>
+  <dependencyManagement>
+    <dependencies>
+      <!-- Fix "Require upper bound dependencies error" due to dependency on FAQ Application. -->
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-rendering-macro-velocity</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-rendering-macro-include</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.rendering</groupId>
+        <artifactId>xwiki-rendering-macro-box</artifactId>
+        <version>${rendering.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.rendering</groupId>
+        <artifactId>xwiki-rendering-macro-message</artifactId>
+        <version>${rendering.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.rendering</groupId>
+        <artifactId>xwiki-rendering-macro-html</artifactId>
+        <version>${rendering.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-localization-source-wiki</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-rendering-wikimacro-store</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-livetable-ui</artifactId>
+        <version>${platform.version}</version>
+        <type>xar</type>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-search-ui</artifactId>
+        <version>${platform.version}</version>
+        <type>xar</type>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-panels-ui</artifactId>
+        <version>${platform.version}</version>
+        <type>xar</type>
+      </dependency>
+      <!-- Fix "Require upper bound dependencies error" due to dependency on Latext Export. -->
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-uiextension-api</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-filter-script</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-filter-event-model</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-oldcore</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.commons</groupId>
+        <artifactId>xwiki-commons-component-api</artifactId>
+        <version>${commons.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-configuration-default</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-template-api</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.rendering</groupId>
+        <artifactId>xwiki-rendering-syntax-wikimodel</artifactId>
+        <version>${rendering.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-localization-api</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.commons</groupId>
+        <artifactId>xwiki-commons-properties</artifactId>
+        <version>${commons.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.rendering</groupId>
+        <artifactId>xwiki-rendering-macro-figure</artifactId>
+        <version>${rendering.version}</version>
+      </dependency>
+      <!-- Fix "Require upper bound dependencies error" due to dependency on Blog Application. -->
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-localization-macro</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.commons</groupId>
+        <artifactId>xwiki-commons-observation-api</artifactId>
+        <version>${commons.version}</version>
+      </dependency>
+      <!-- Fix "Require upper bound dependencies error" due to transitive dependency on Show/Hide Macro. -->
+      <dependency>
+        <groupId>org.xwiki.platform</groupId>
+        <artifactId>xwiki-platform-skin-skinx</artifactId>
+        <version>${platform.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <modules>
     <module>xwiki-pro-package</module>
     <module>xwiki-pro-ui</module>

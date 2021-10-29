@@ -25,7 +25,7 @@
   <parent>
     <groupId>com.xwiki.pro</groupId>
     <artifactId>xwiki-pro</artifactId>
-    <version>10.7-SNAPSHOT</version>
+    <version>11.0-SNAPSHOT</version>
   </parent>
   <artifactId>xwiki-pro-package</artifactId>
   <name>XWiki Pro - Package</name>
@@ -38,105 +38,112 @@
     <dependency>
       <groupId>com.xwiki.activedirectory</groupId>
       <artifactId>application-activedirectory-ui</artifactId>
-      <version>1.6.5</version>
+      <version>1.13.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.antivirus</groupId>
       <artifactId>application-antivirus-clamav-ui</artifactId>
-      <version>1.2.6</version>
+      <version>1.4.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.diagram</groupId>
       <artifactId>application-diagram</artifactId>
-      <version>1.10</version>
+      <version>1.17.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.filemanager</groupId>
       <artifactId>application-filemanager-ui</artifactId>
-      <version>2.2.10</version>
+      <version>2.5.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.flashmessages</groupId>
       <artifactId>application-flashmessages-ui</artifactId>
-      <version>1.4.7</version>
+      <version>1.6.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.forum</groupId>
       <artifactId>application-forum-ui</artifactId>
-      <version>2.6.2</version>
+      <version>2.8.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.googleapps</groupId>
       <artifactId>application-googleapps</artifactId>
-      <version>2.4.3</version>
+      <version>2.5.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.ideas</groupId>
       <artifactId>application-ideas</artifactId>
-      <version>1.11.12</version>
+      <version>1.13.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.meeting</groupId>
       <artifactId>application-meeting-ui</artifactId>
-      <version>1.9.8</version>
+      <version>1.12</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.mocca-calendar</groupId>
       <artifactId>application-mocca-calendar-ui</artifactId>
-      <version>2.8.8</version>
+      <version>2.10.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.office365</groupId>
       <artifactId>application-office365</artifactId>
-      <version>1.3.10</version>
+      <version>1.9</version>
+      <type>xar</type>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.xwiki.integration-azure-oauth</groupId>
+      <artifactId>integration-azure-oauth-ui</artifactId>
+      <version>1.4</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.onlyoffice-connector</groupId>
       <artifactId>application-onlyoffice-connector-ui</artifactId>
-      <version>1.4.1</version>
+      <version>1.5.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.pdfviewer</groupId>
       <artifactId>macro-pdfviewer-ui</artifactId>
-      <version>2.0.3</version>
+      <version>2.3</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.xpoll</groupId>
       <artifactId>application-xpoll-ui</artifactId>
-      <version>2.0</version>
+      <version>2.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.pro</groupId>
       <artifactId>xwiki-pro-macros</artifactId>
-      <version>1.0-RC1</version>
+      <version>1.2.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -146,28 +153,28 @@
     <dependency>
       <groupId>org.xwiki.contrib.blog</groupId>
       <artifactId>application-blog-ui</artifactId>
-      <version>9.10.3</version>
+      <version>9.11.2</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.cookie-consent</groupId>
       <artifactId>application-cookie-consent</artifactId>
-      <version>1.2.3</version>
+      <version>1.2.6</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.xwiki.contrib</groupId>
       <artifactId>application-faq-ui</artifactId>
-      <version>8.2</version>
+      <version>8.4</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.xwiki.contrib</groupId>
-      <artifactId>application-page-relations-ui</artifactId>
-      <version>2.4</version>
+      <artifactId>application-relations-ui</artifactId>
+      <version>3.0</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -181,14 +188,14 @@
     <dependency>
       <groupId>org.xwiki.contrib</groupId>
       <artifactId>macro-jwplayer</artifactId>
-      <version>2.1.3</version>
+      <version>2.1.6</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.xwiki.contrib</groupId>
       <artifactId>xwiki-macro-map</artifactId>
-      <version>2.1</version>
+      <version>2.1.4</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -202,13 +209,14 @@
     <dependency>
       <groupId>org.xwiki.contrib.jira</groupId>
       <artifactId>jira-macro-platform</artifactId>
-      <version>8.5</version>
+      <version>8.6.2</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.xwiki.contrib.latex</groupId>
       <artifactId>latex-export</artifactId>
-      <version>1.9.1</version>
+      <!-- 1.10+ requires XWiki 11.10.4+ (and we need to support also 11.10) -->
+      <version>1.9.4</version>
       <scope>runtime</scope>
     </dependency>
   </dependencies>

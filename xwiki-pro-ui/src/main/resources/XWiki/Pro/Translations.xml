@@ -27,12 +27,9 @@
   <defaultLanguage>en</defaultLanguage>
   <translation>0</translation>
   <creator>xwiki:XWiki.Admin</creator>
-  <creationDate>1513178536000</creationDate>
   <parent>xwiki:XWiki.Pro.WebHome</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
-  <date>1513338559000</date>
-  <contentUpdateDate>1513338559000</contentUpdateDate>
   <version>1.1</version>
   <title>Translations</title>
   <comment/>
@@ -70,6 +67,8 @@ xwiki.pro.wizard.chooseExtensions.close=Close</content>
         <cache>0</cache>
         <disabled>0</disabled>
         <displayType>select</displayType>
+        <freeText>forbidden</freeText>
+        <largeStorage>0</largeStorage>
         <multiSelect>0</multiSelect>
         <name>scope</name>
         <number>1</number>
