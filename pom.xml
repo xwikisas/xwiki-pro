@@ -182,5 +182,6 @@
   <modules>
     <module>xwiki-pro-package</module>
     <module>xwiki-pro-ui</module>
+    <module>xwiki-pro-xip</module>
   </modules>
 </project>
