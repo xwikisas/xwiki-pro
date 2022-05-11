@@ -25,7 +25,7 @@
   <parent>
     <groupId>com.xwiki.pro</groupId>
     <artifactId>xwiki-pro</artifactId>
-    <version>11.2-SNAPSHOT</version>
+    <version>11.2</version>
   </parent>
   <artifactId>xwiki-pro-xip</artifactId>
   <name>XWiki Pro - XIP</name>
