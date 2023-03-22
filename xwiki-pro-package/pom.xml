@@ -38,28 +38,28 @@
     <dependency>
       <groupId>com.xwiki.activedirectory</groupId>
       <artifactId>application-activedirectory-ui</artifactId>
-      <version>1.14</version>
+      <version>1.15</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.antivirus</groupId>
       <artifactId>application-antivirus-clamav-ui</artifactId>
-      <version>1.4.2</version>
+      <version>1.5</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.diagram</groupId>
       <artifactId>application-diagram</artifactId>
-      <version>1.17.2</version>
+      <version>1.17.3</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.filemanager</groupId>
       <artifactId>application-filemanager-ui</artifactId>
-      <version>2.5.4</version>
+      <version>2.5.5</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -94,35 +94,35 @@
     <dependency>
       <groupId>com.xwiki.meeting</groupId>
       <artifactId>application-meeting-ui</artifactId>
-      <version>1.12.1</version>
+      <version>1.13.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.mocca-calendar</groupId>
       <artifactId>application-mocca-calendar-ui</artifactId>
-      <version>2.11</version>
+      <version>2.12</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.office365</groupId>
       <artifactId>application-office365</artifactId>
-      <version>1.9.1</version>
+      <version>1.10</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.integration-azure-oauth</groupId>
       <artifactId>integration-azure-oauth-ui</artifactId>
-      <version>1.5.4</version>
+      <version>1.5.9</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.onlyoffice-connector</groupId>
       <artifactId>application-onlyoffice-connector-ui</artifactId>
-      <version>1.6</version>
+      <version>2.0</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -136,14 +136,14 @@
     <dependency>
       <groupId>com.xwiki.xpoll</groupId>
       <artifactId>application-xpoll-ui</artifactId>
-      <version>2.1.5</version>
+      <version>2.1.6</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.pro</groupId>
       <artifactId>xwiki-pro-macros</artifactId>
-      <version>1.2.2</version>
+      <version>1.7</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -153,14 +153,14 @@
     <dependency>
       <groupId>org.xwiki.contrib.blog</groupId>
       <artifactId>application-blog-ui</artifactId>
-      <version>9.11.2</version>
+      <version>9.13.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.cookie-consent</groupId>
       <artifactId>application-cookie-consent</artifactId>
-      <version>1.2.6</version>
+      <version>1.2.8</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -174,7 +174,7 @@
     <dependency>
       <groupId>org.xwiki.contrib</groupId>
       <artifactId>application-relations-ui</artifactId>
-      <version>3.0</version>
+      <version>3.1.4</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -187,15 +187,15 @@
     </dependency>
     <dependency>
       <groupId>org.xwiki.contrib</groupId>
-      <artifactId>macro-jwplayer</artifactId>
-      <version>2.1.6</version>
+      <artifactId>macro-jwplayer-ui</artifactId>
+      <version>2.1.10</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.xwiki.contrib</groupId>
       <artifactId>xwiki-macro-map</artifactId>
-      <version>2.1.4</version>
+      <version>2.1.6</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -209,14 +209,13 @@
     <dependency>
       <groupId>org.xwiki.contrib.jira</groupId>
       <artifactId>jira-macro-platform</artifactId>
-      <version>8.6.2</version>
+      <version>8.6.5</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.xwiki.contrib.latex</groupId>
       <artifactId>latex-export</artifactId>
-      <!-- 1.10+ requires XWiki 11.10.4+ (and we need to support also 11.10) -->
-      <version>1.9.4</version>
+      <version>1.20</version>
       <scope>runtime</scope>
     </dependency>
   </dependencies>
