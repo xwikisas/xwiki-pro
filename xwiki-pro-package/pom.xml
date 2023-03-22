@@ -50,6 +50,13 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
+      <groupId>com.xwiki.collabora</groupId>
+      <artifactId>application-collabora-ui</artifactId>
+      <version>1.0.4</version>
+      <type>xar</type>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
       <groupId>com.xwiki.diagram</groupId>
       <artifactId>application-diagram</artifactId>
       <version>1.17.3</version>
