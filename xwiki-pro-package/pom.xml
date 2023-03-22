@@ -97,6 +97,12 @@
       <version>1.13.1</version>
       <type>xar</type>
       <scope>runtime</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>com.sun.mail</groupId>
+          <artifactId>javax.mail</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>com.xwiki.mocca-calendar</groupId>
@@ -187,8 +193,8 @@
     </dependency>
     <dependency>
       <groupId>org.xwiki.contrib</groupId>
-      <artifactId>macro-jwplayer-ui</artifactId>
-      <version>2.1.10</version>
+      <artifactId>macro-jwplayer</artifactId>
+      <version>${jwplayer.version}</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -215,7 +221,7 @@
     <dependency>
       <groupId>org.xwiki.contrib.latex</groupId>
       <artifactId>latex-export</artifactId>
-      <version>1.20</version>
+      <version>1.19</version>
       <scope>runtime</scope>
     </dependency>
   </dependencies>
