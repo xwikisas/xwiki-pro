@@ -34,7 +34,7 @@
   <name>XWiki Pro - Parent POM</name>
   <description>Extend your wiki with a full set of productivity and business-oriented applications. Benefit from expert technical support for the whole wiki. Try it free.</description>
   <properties>
-    <licensing.version>1.24.1</licensing.version>
+    <licensing.version>1.24.4</licensing.version>
     <!-- We don't have any JAR modules at the moment. -->
     <xwiki.spoon.skip>true</xwiki.spoon.skip>
   </properties>
@@ -53,4 +53,16 @@
     <module>xwiki-pro-ui</module>
     <module>xwiki-pro-xip</module>
   </modules>
+  <!--  This was added because latex app forces the usage of plexus-archiver v4.8.0 while the 13.10 platform is at a
+        different version. As of 15.7-rc-1, the platform uses 4.8.0. This dependency management block should be removed
+        when the pro apps depend on a version greater or equal to the aforementioned one.  -->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.codehaus.plexus</groupId>
+        <artifactId>plexus-archiver</artifactId>
+        <version>4.8.0</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 </project>
