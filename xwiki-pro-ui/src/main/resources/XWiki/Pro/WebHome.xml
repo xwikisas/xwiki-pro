@@ -462,7 +462,7 @@ require(['jquery', 'bootstrap'], function ($) {
     </property>
     <property>
       <content>{{velocity}}
-#if ($hasAdmin)
+#if ($hasGlobalAdmin)
   {{include reference="XWiki.Pro.WebHome" /}}
 #end
 {{/velocity}}</content>
