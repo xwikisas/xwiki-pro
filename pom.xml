@@ -37,6 +37,7 @@
     <licensing.version>1.25</licensing.version>
     <!-- We don't have any JAR modules at the moment. -->
     <xwiki.spoon.skip>true</xwiki.spoon.skip>
+    <xwiki.enforcer.no-legacy-dependencies.skip>true</xwiki.enforcer.no-legacy-dependencies.skip>
   </properties>
   <scm>
     <connection>scm:git:git://github.com/xwikisas/xwiki-pro.git</connection>
