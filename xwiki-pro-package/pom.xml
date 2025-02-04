@@ -38,70 +38,70 @@
     <dependency>
       <groupId>com.xwiki.activedirectory</groupId>
       <artifactId>application-activedirectory-ui</artifactId>
-      <version>1.16.14</version>
+      <version>1.17.0</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.antivirus</groupId>
       <artifactId>application-antivirus-clamav-ui</artifactId>
-      <version>1.6.1</version>
+      <version>1.7.0</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.collabora</groupId>
       <artifactId>application-collabora-ui</artifactId>
-      <version>1.3.4</version>
+      <version>1.5.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.diagram</groupId>
       <artifactId>application-diagram</artifactId>
-      <version>1.20.5</version>
+      <version>1.21</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.filemanager</groupId>
       <artifactId>application-filemanager-ui</artifactId>
-      <version>2.7.1</version>
+      <version>2.8</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.flashmessages</groupId>
       <artifactId>application-flashmessages-ui</artifactId>
-      <version>1.7.2</version>
+      <version>1.8.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.forum</groupId>
       <artifactId>application-forum-ui</artifactId>
-      <version>2.9.2</version>
+      <version>2.10.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.googleapps</groupId>
       <artifactId>application-googleapps</artifactId>
-      <version>2.6.1</version>
+      <version>2.7</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.ideas</groupId>
       <artifactId>application-ideas</artifactId>
-      <version>1.14.2</version>
+      <version>1.15</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.meeting</groupId>
       <artifactId>application-meeting-ui</artifactId>
-      <version>1.14.3</version>
+      <version>1.15</version>
       <type>xar</type>
       <scope>runtime</scope>
       <exclusions>
@@ -114,56 +114,56 @@
     <dependency>
       <groupId>com.xwiki.mocca-calendar</groupId>
       <artifactId>application-mocca-calendar-ui</artifactId>
-      <version>2.13.3</version>
+      <version>2.15</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.office365</groupId>
       <artifactId>application-office365</artifactId>
-      <version>1.11.3</version>
+      <version>1.12</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.integration-azure-oauth</groupId>
       <artifactId>integration-azure-oauth-ui</artifactId>
-      <version>1.7.5</version>
+      <version>1.9</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.onlyoffice-connector</groupId>
       <artifactId>application-onlyoffice-connector-ui</artifactId>
-      <version>2.3.1</version>
+      <version>2.4.0</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.pdfviewer</groupId>
       <artifactId>macro-pdfviewer-ui</artifactId>
-      <version>2.5.4</version>
+      <version>2.6.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.task</groupId>
       <artifactId>application-task-ui</artifactId>
-      <version>3.4.3</version>
+      <version>3.6.6</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.xpoll</groupId>
       <artifactId>application-xpoll-ui</artifactId>
-      <version>2.2.2</version>
+      <version>2.3</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.xwiki.pro</groupId>
       <artifactId>xwiki-pro-macros</artifactId>
-      <version>1.19.6</version>
+      <version>1.26.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -173,7 +173,7 @@
     <dependency>
       <groupId>org.xwiki.contrib.blog</groupId>
       <artifactId>application-blog-ui</artifactId>
-      <version>9.13.9</version>
+      <version>9.13.11</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -229,13 +229,13 @@
     <dependency>
       <groupId>org.xwiki.contrib.jira</groupId>
       <artifactId>jira-macro-platform</artifactId>
-      <version>8.6.5</version>
+      <version>8.7</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.xwiki.contrib.latex</groupId>
       <artifactId>latex-export</artifactId>
-      <version>1.24</version>
+      <version>1.26</version>
       <scope>runtime</scope>
     </dependency>
   </dependencies>
