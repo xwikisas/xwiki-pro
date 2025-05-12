@@ -73,7 +73,7 @@
     <dependency>
       <groupId>com.xwiki.diagram</groupId>
       <artifactId>application-diagram</artifactId>
-      <version>1.22.2</version>
+      <version>1.22.3</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -163,7 +163,7 @@
     <dependency>
       <groupId>com.xwiki.task</groupId>
       <artifactId>application-task-ui</artifactId>
-      <version>3.6.6</version>
+      <version>3.7.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
