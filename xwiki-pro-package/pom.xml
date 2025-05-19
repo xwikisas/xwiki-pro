@@ -181,6 +181,13 @@
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
+    <dependency>
+      <groupId>com.xwiki.urlshortener</groupId>
+      <artifactId>application-urlshortener-ui</artifactId>
+      <version>1.2.6</version>
+      <type>xar</type>
+      <scope>runtime</scope>
+    </dependency>
     <!--           -->
     <!-- Free Apps -->
     <!--           -->
