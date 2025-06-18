@@ -73,7 +73,7 @@
     <dependency>
       <groupId>com.xwiki.diagram</groupId>
       <artifactId>application-diagram</artifactId>
-      <version>1.22.3</version>
+      <version>1.22.5</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
