@@ -35,7 +35,7 @@
   <description>Extend your wiki with a full set of productivity and business-oriented applications. Benefit from expert technical support for the whole wiki. Try it free.</description>
   <properties>
     <licensing.version>1.29</licensing.version>
-    <macrofullcalendar.version>2.4.0</macrofullcalendar.version>
+    <macrofullcalendar.version>2.4.5</macrofullcalendar.version>
     <!--  Needed for Latex dependency.  -->
     <dockerJava.version>3.3.6</dockerJava.version>
     <!-- We don't have any JAR modules at the moment. -->
