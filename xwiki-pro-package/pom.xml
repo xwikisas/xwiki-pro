@@ -256,7 +256,7 @@
     <dependency>
       <groupId>org.xwiki.contrib.latex</groupId>
       <artifactId>latex-export</artifactId>
-      <version>1.26</version>
+      <version>1.26.1</version>
       <scope>runtime</scope>
     </dependency>
   </dependencies>
