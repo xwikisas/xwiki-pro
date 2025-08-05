@@ -29,7 +29,7 @@
   </parent>
   <groupId>com.xwiki.pro</groupId>
   <artifactId>xwiki-pro</artifactId>
-  <version>13.13.3</version>
+  <version>13.13.4-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>XWiki Pro - Parent POM</name>
   <description>Extend your wiki with a full set of productivity and business-oriented applications. Benefit from expert technical support for the whole wiki. Try it free.</description>
@@ -47,7 +47,7 @@
     <connection>scm:git:git://github.com/xwikisas/xwiki-pro.git</connection>
     <developerConnection>scm:git:git@github.com:xwikisas/xwiki-pro.git</developerConnection>
     <url>https://github.com/xwikisas/xwiki-pro</url>
-    <tag>xwiki-pro-13.13.3</tag>
+    <tag>HEAD</tag>
   </scm>
   <issueManagement>
     <system>GitHub</system>
