@@ -176,7 +176,7 @@
     </dependency>
     <dependency>
       <groupId>com.xwiki.pro</groupId>
-      <artifactId>xwiki-pro-macros</artifactId>
+      <artifactId>xwiki-pro-macros-ui</artifactId>
       <version>1.27.2</version>
       <type>xar</type>
       <scope>runtime</scope>
