@@ -72,7 +72,7 @@
     <dependency>
       <groupId>com.xwiki.collabora</groupId>
       <artifactId>application-collabora-ui</artifactId>
-      <version>1.6.2</version>
+      <version>1.7.3</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -107,7 +107,7 @@
     <dependency>
       <groupId>com.xwiki.googleapps</groupId>
       <artifactId>application-googleapps</artifactId>
-      <version>2.7</version>
+      <version>3.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -134,7 +134,7 @@
     <dependency>
       <groupId>com.xwiki.mocca-calendar</groupId>
       <artifactId>application-mocca-calendar-ui</artifactId>
-      <version>2.15.4</version>
+      <version>2.16.0</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -190,7 +190,7 @@
     <dependency>
       <groupId>com.xwiki.urlshortener</groupId>
       <artifactId>application-urlshortener-ui</artifactId>
-      <version>1.2.6</version>
+      <version>1.2.7</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -200,7 +200,7 @@
     <dependency>
       <groupId>org.xwiki.contrib.blog</groupId>
       <artifactId>application-blog-ui</artifactId>
-      <version>9.13.11</version>
+      <version>9.14</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -262,7 +262,7 @@
     <dependency>
       <groupId>org.xwiki.contrib.latex</groupId>
       <artifactId>latex-export</artifactId>
-      <version>1.26</version>
+      <version>1.26.1</version>
       <scope>runtime</scope>
     </dependency>
   </dependencies>
