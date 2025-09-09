@@ -148,7 +148,7 @@
     <dependency>
       <groupId>com.xwiki.integration-azure-oauth</groupId>
       <artifactId>integration-azure-oauth-ui</artifactId>
-      <version>1.9</version>
+      <version>2.0.4</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
