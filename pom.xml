@@ -38,7 +38,7 @@
     <macrofullcalendar.version>2.4.6</macrofullcalendar.version>
     <diagram.version>1.22.5</diagram.version>
     <!--  Needed for Latex dependency.  -->
-    <dockerJava.version>3.3.6</dockerJava.version>
+    <dockerJava.version>3.7.0</dockerJava.version>
     <!-- We don't have any JAR modules at the moment. -->
     <xwiki.spoon.skip>true</xwiki.spoon.skip>
     <xwiki.enforcer.no-legacy-dependencies.skip>true</xwiki.enforcer.no-legacy-dependencies.skip>
