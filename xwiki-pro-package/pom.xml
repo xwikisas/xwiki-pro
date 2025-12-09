@@ -183,7 +183,7 @@
     <dependency>
       <groupId>com.xwiki.pro</groupId>
       <artifactId>xwiki-pro-macros-ui</artifactId>
-      <version>1.28.0</version>
+      <version>1.28.5</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
