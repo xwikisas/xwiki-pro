@@ -190,7 +190,7 @@
     <dependency>
       <groupId>com.xwiki.urlshortener</groupId>
       <artifactId>application-urlshortener-ui</artifactId>
-      <version>1.2.7</version>
+      <version>1.2.8</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
