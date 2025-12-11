@@ -107,7 +107,7 @@
     <dependency>
       <groupId>com.xwiki.googleapps</groupId>
       <artifactId>application-googleapps</artifactId>
-      <version>3.1</version>
+      <version>3.2.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
