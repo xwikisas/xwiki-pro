@@ -58,16 +58,8 @@
     <module>xwiki-pro-ui</module>
     <module>xwiki-pro-xip</module>
   </modules>
-  <!--  This was added because latex app forces the usage of plexus-archiver v4.8.0 while the 13.10 platform is at a
-        different version. As of 15.7-rc-1, the platform uses 4.8.0. This dependency management block should be removed
-        when the pro apps depend on a version greater or equal to the aforementioned one.  -->
   <dependencyManagement>
     <dependencies>
-      <dependency>
-        <groupId>org.codehaus.plexus</groupId>
-        <artifactId>plexus-archiver</artifactId>
-        <version>4.8.0</version>
-      </dependency>
       <dependency>
         <groupId>com.xwiki.licensing</groupId>
         <artifactId>application-licensing-licensor-api</artifactId>
@@ -75,15 +67,11 @@
       </dependency>
       <dependency>
         <groupId>org.xwiki.contrib</groupId>
-        <artifactId>macro-fullcalendar-api</artifactId>
-        <version>${macrofullcalendar.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.xwiki.contrib</groupId>
         <artifactId>macro-fullcalendar-ui</artifactId>
         <version>${macrofullcalendar.version}</version>
         <type>xar</type>
       </dependency>
+      <!-- Fix dependencies added by the Latex App. This should be reviewed again after latex upgrades its parent.  -->
       <!-- Needed for docker-java-transport-httpclient5 to work properly. Latex uses newer version. -->
       <dependency>
         <groupId>net.java.dev.jna</groupId>
@@ -112,6 +100,7 @@
         <artifactId>docker-java-transport-httpclient5</artifactId>
         <version>${dockerJava.version}</version>
       </dependency>
+      <!-- End Latex dependency management. -->
     </dependencies>
   </dependencyManagement>
 </project>
