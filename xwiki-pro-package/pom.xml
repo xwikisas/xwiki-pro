@@ -141,7 +141,7 @@
     <dependency>
       <groupId>com.xwiki.office365</groupId>
       <artifactId>application-office365</artifactId>
-      <version>1.13</version>
+      <version>1.13.1</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
