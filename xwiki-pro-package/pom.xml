@@ -84,6 +84,13 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
+      <groupId>com.xwiki.ideas</groupId>
+      <artifactId>application-ideas</artifactId>
+      <version>1.18.2</version>
+      <type>xar</type>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
       <groupId>com.xwiki.filemanager</groupId>
       <artifactId>application-filemanager-ui</artifactId>
       <version>2.9.1</version>
@@ -108,13 +115,6 @@
       <groupId>com.xwiki.googleapps</groupId>
       <artifactId>application-googleapps</artifactId>
       <version>3.3</version>
-      <type>xar</type>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.xwiki.ideas</groupId>
-      <artifactId>application-ideas</artifactId>
-      <version>1.18.2</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
@@ -266,21 +266,4 @@
       <scope>runtime</scope>
     </dependency>
   </dependencies>
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>com.xwiki.commons</groupId>
-        <artifactId>xwiki-pro-commons-pickers-ui</artifactId>
-        <version>1.4.0</version>
-      </dependency>
-      <!-- Office365 brings an old version as transitive dependency, because of the abandoned com.microsoft.azure:adal4j project.
-        This should be removed once this issue is fixed https://github.com/xwikisas/application-office365/issues/26 : Migrate
-        code to MSAL since ADAL was archived -->
-      <dependency>
-        <groupId>com.nimbusds</groupId>
-        <artifactId>oauth2-oidc-sdk</artifactId>
-        <version>11.37.2</version>
-      </dependency>
-    </dependencies>
-</dependencyManagement>
 </project>

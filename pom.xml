@@ -66,6 +66,11 @@
         <version>${licensing.version}</version>
       </dependency>
       <dependency>
+        <groupId>com.nimbusds</groupId>
+        <artifactId>nimbus-jose-jwt</artifactId>
+        <version>10.9.1</version>
+      </dependency>
+      <dependency>
         <groupId>org.xwiki.contrib</groupId>
         <artifactId>macro-fullcalendar-ui</artifactId>
         <version>${macrofullcalendar.version}</version>
