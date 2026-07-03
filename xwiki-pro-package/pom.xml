@@ -58,7 +58,7 @@
     <dependency>
       <groupId>com.xwiki.analytics</groupId>
       <artifactId>application-analytics-ui</artifactId>
-      <version>1.3.1</version>
+      <version>1.3.2</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
