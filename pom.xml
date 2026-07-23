@@ -36,7 +36,7 @@
   <properties>
     <licensing.version>1.32.3</licensing.version>
     <macrofullcalendar.version>2.5.4</macrofullcalendar.version>
-    <diagram.version>1.23.1</diagram.version>
+    <diagram.version>2.0</diagram.version>
     <!--  Needed for Latex dependency.  -->
     <dockerJava.version>3.3.6</dockerJava.version>
     <!-- We don't have any JAR modules at the moment. -->
