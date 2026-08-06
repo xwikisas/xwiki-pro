@@ -244,7 +244,7 @@
 require(['jquery', 'bootstrap'], function ($) {
   // Focus the first visible input field from the current step.
   var focusFirstVisibleInput = function() {
-    $(this).find('.modal-body :input:visible:enabled').first().focus();
+    $(this).find('.modal-body :input:visible:enabled').first().trigger('focus');
   };
 
   // We need a flag to determine that the wizard is not closed when one of its steps are closed.
@@ -287,7 +287,7 @@ require(['jquery', 'bootstrap'], function ($) {
     // Get to the Register License step.
     switchSteps(getLicenseModal, registerLicenseModal);
   }).on('click', '.licenseButton-paid, .licenseButton-extendPaid', function() {
-    if (getLicenseModal.find('.required').size() === 0) {
+    if (getLicenseModal.find('.required').length === 0) {
       // Replace the Buy button with the Update button.
       $(this).hide().prev('#updateLicenses').show();
     }
@@ -301,9 +301,9 @@ require(['jquery', 'bootstrap'], function ($) {
 
   // Delay the tour until after the wizard is closed.
   $(document).on('ajaxSuccess', function(event, response, request, data) {
-    if (data &amp;&amp; $.isArray(data.tours)) {
+    if (data &amp;&amp; Array.isArray(data.tours)) {
       $.each(data.tours, function(index, tour) {
-        if ($.isArray(tour.steps)) {
+        if (Array.isArray(tour.steps)) {
           $.each(tour.steps, function(index, step) {
             // The onShow callback can return a promise to delay the step start. Let's do that.
             // Note that we're not overwriting onShow here because the JSON format doesn't support functions.
