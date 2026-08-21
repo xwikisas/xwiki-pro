@@ -93,7 +93,7 @@
     <dependency>
       <groupId>com.xwiki.filemanager</groupId>
       <artifactId>application-filemanager-ui</artifactId>
-      <version>2.9.1</version>
+      <version>2.9.2</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
