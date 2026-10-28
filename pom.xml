@@ -38,7 +38,7 @@
     <macrofullcalendar.version>2.5.5</macrofullcalendar.version>
     <oidc.version>2.29.1</oidc.version>
     <jira.version>11.1.7</jira.version>
-    <diagram.version>2.0</diagram.version>
+    <diagram.version>2.1.2</diagram.version>
     <!--  Needed for Latex dependency.  -->
     <dockerJava.version>3.3.6</dockerJava.version>
     <!-- We don't have any JAR modules at the moment. -->
