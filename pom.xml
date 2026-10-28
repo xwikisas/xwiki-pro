@@ -34,7 +34,7 @@
   <name>XWiki Pro - Parent POM</name>
   <description>Extend your wiki with a full set of productivity and business-oriented applications. Benefit from expert technical support for the whole wiki. Try it free.</description>
   <properties>
-    <licensing.version>1.32.4</licensing.version>
+    <licensing.version>1.33.1</licensing.version>
     <macrofullcalendar.version>2.5.5</macrofullcalendar.version>
     <oidc.version>2.29.1</oidc.version>
     <jira.version>11.1.7</jira.version>
