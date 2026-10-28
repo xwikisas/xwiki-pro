@@ -34,8 +34,10 @@
   <name>XWiki Pro - Parent POM</name>
   <description>Extend your wiki with a full set of productivity and business-oriented applications. Benefit from expert technical support for the whole wiki. Try it free.</description>
   <properties>
-    <licensing.version>1.32.3</licensing.version>
-    <macrofullcalendar.version>2.5.4</macrofullcalendar.version>
+    <licensing.version>1.32.4</licensing.version>
+    <macrofullcalendar.version>2.5.5</macrofullcalendar.version>
+    <oidc.version>2.29.1</oidc.version>
+    <jira.version>11.1.7</jira.version>
     <diagram.version>2.0</diagram.version>
     <!--  Needed for Latex dependency.  -->
     <dockerJava.version>3.3.6</dockerJava.version>
@@ -68,7 +70,12 @@
       <dependency>
         <groupId>com.nimbusds</groupId>
         <artifactId>nimbus-jose-jwt</artifactId>
-        <version>10.9.1</version>
+        <version>10.10</version>
+      </dependency>
+      <dependency>
+        <groupId>com.nimbusds</groupId>
+        <artifactId>oauth2-oidc-sdk</artifactId>
+        <version>11.38.2</version>
       </dependency>
       <dependency>
         <groupId>org.jetbrains.kotlin</groupId>
@@ -80,6 +87,21 @@
         <artifactId>macro-fullcalendar-ui</artifactId>
         <version>${macrofullcalendar.version}</version>
         <type>xar</type>
+      </dependency>
+      <dependency>
+        <groupId>org.webjars.npm</groupId>
+        <artifactId>dompurify</artifactId>
+        <version>3.4.12</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.contrib.oidc</groupId>
+        <artifactId>oauth2-client</artifactId>
+        <version>${oidc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xwiki.contrib.oidc</groupId>
+        <artifactId>oidc-authenticator</artifactId>
+        <version>${oidc.version}</version>
       </dependency>
       <!-- Fix dependencies added by the Latex App. This should be reviewed again after latex upgrades its parent.  -->
       <!-- Needed for docker-java-transport-httpclient5 to work properly. Latex uses newer version. -->
