@@ -89,6 +89,12 @@
         <type>xar</type>
       </dependency>
       <dependency>
+        <groupId>com.xwiki.commons</groupId>
+        <artifactId>xwiki-pro-commons-pickers-ui</artifactId>
+        <version>1.5.0</version>
+        <type>xar</type>
+      </dependency>
+      <dependency>
         <groupId>org.webjars.npm</groupId>
         <artifactId>dompurify</artifactId>
         <version>3.4.17</version>
