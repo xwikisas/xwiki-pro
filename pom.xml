@@ -36,7 +36,7 @@
   <properties>
     <licensing.version>1.32.4</licensing.version>
     <macrofullcalendar.version>2.5.5</macrofullcalendar.version>
-    <oidc.version>2.27.0</oidc.version>
+    <oidc.version>2.29.1</oidc.version>
     <jira.version>11.1.7</jira.version>
     <diagram.version>2.0</diagram.version>
     <!--  Needed for Latex dependency.  -->
@@ -70,7 +70,7 @@
       <dependency>
         <groupId>com.nimbusds</groupId>
         <artifactId>nimbus-jose-jwt</artifactId>
-        <version>10.9.1</version>
+        <version>10.10</version>
       </dependency>
       <dependency>
         <groupId>com.nimbusds</groupId>
