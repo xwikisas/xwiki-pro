@@ -270,7 +270,7 @@
     <dependency>
       <groupId>org.xwiki.contrib.jira</groupId>
       <artifactId>jira-macro-platform</artifactId>
-      <version>11.1.7</version>
+      <version>${jira.version}</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
