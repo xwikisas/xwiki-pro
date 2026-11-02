@@ -41,7 +41,7 @@
     <diagram.version>2.1.2</diagram.version>
     <procommons.version>1.5.0</procommons.version>
     <!--  Needed for Latex dependency.  -->
-    <dockerJava.version>3.3.6</dockerJava.version>
+    <dockerJava.version>3.7.1</dockerJava.version>
     <!-- We don't have any JAR modules at the moment. -->
     <xwiki.spoon.skip>true</xwiki.spoon.skip>
     <xwiki.enforcer.no-legacy-dependencies.skip>true</xwiki.enforcer.no-legacy-dependencies.skip>
