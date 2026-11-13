@@ -36,7 +36,7 @@
   <properties>
     <licensing.version>1.33.1</licensing.version>
     <macrofullcalendar.version>2.5.5</macrofullcalendar.version>
-    <oidc.version>2.29.1</oidc.version>
+    <oidc.version>2.30.1</oidc.version>
     <jira.version>11.1.7</jira.version>
     <diagram.version>2.1.2</diagram.version>
     <procommons.version>1.5.0</procommons.version>
