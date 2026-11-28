@@ -214,7 +214,7 @@
     <dependency>
       <groupId>org.xwiki.contrib.blog</groupId>
       <artifactId>application-blog-ui</artifactId>
-      <version>9.15.15</version>
+      <version>9.15.16</version>
       <type>xar</type>
       <scope>runtime</scope>
     </dependency>
